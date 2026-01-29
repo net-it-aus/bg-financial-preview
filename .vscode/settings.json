@@ -1,0 +1,35 @@
+{
+    "workbench.colorCustomizations": {
+        // top title bar START
+            "titleBar.activeForeground": "#0901ff",
+            "titleBar.activeBackground": "#01d5ff",
+            "titleBar.border": "#fd04fd",
+        // top title bar END
+        // activity bar START
+            "activityBar.background":"#01d5ff",
+            "activityBar.foreground": "#0901ff",
+            "activityBar.inactiveForeground":"#0901ff",
+            "activityBar.activeBackground":"#fdfcfc",
+        // activity bar END
+        // sidebar START
+            "sideBar.foreground":"#ffffff",
+            "sideBar.background":"#000000",
+        // sidebar END
+        // tabs START
+            // active 
+                "tab.activeForeground": "#000000",
+                "tab.activeBackground": "#ffffff",
+            // active
+            // inactive
+                "tab.inactiveForeground": "#ffffff",
+                "tab.inactiveBackground": "#000000",
+                "tab.hoverForeground": "#000000",
+                "tab.hoverBackground": "#ffffff",
+            // inactive
+        // tabs END
+        // bottom status bar START
+            "statusBar.foreground":"#0901ff",
+            "statusBar.background":"#01d5ff",
+        // bottom status bar END
+    }
+}

@@ -1,0 +1,1121 @@
+:root{
+
+    --header-height:0px;
+
+    --background-global:lightskyblue;
+    --background-global:rgb(230,240,255);
+    --background-global:white;
+    --background-header:linear-gradient(45deg,aquamarine,blue,navy);
+    --background-header:white;
+
+    --font-family-global:Arial, Helvetica, sans-serif;;
+    --font-family-bgf:'Roboto', sans-serif;
+
+    /* font-size: clamp(minimum,preferred,maximum); */
+    --font-size-body:clamp(1rem,2vw,1.5rem);
+    --font-size-bgf1:clamp(2rem,3vw,4rem);
+    --font-size-bgf2:clamp(1rem,2vw,3rem);
+    --font-size-footer:clamp(1rem,2vw,1rem);
+
+    --color-body:navy;
+    --color-body:darkslategrey;
+    --footer-color:lightskyblue;
+    --footer-color:rgb(230,240,255);
+    --footer-background-color: navy;
+    --footer-background-color: darkslategrey;
+    --footer-background-color: steelblue;
+
+    // --ato-links-background-photo-height: 70vh;
+
+    /* SLIDE BACKGROUND COLOR */
+        x:rgba(0, 0, 0, 0.5);
+        x:rgba(255, 255, 255, 0.5);
+        x:rgba(255, 0, 0, 0.5);
+        x:rgba(0, 255, 0, 0.5);
+        x:rgba(0, 0, 255, 0.5);
+        x:rgba(0, 255, 255, 0.5);
+        x:rgba(255, 0, 255, 0.5);
+        x:rgba(255, 255, 0, 0.5);
+    /* SLIDE BACKGROUND COLOR */
+}
+
+// 1. Define your stacking order
+    $zIndex-overlay: 1000;
+    $zIndex-header:  1010; // Keeps the header (and hamburger) on top of everything
+    $zIndex-nav:     1020;
+    $zIndex-noscript:  1030;
+
+// ================================ noscript JS recommended START =================================
+    .noscript-recommended {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: #0f172a; // Match your footer/menu background
+        color: white;
+        z-index: $zIndex-noscript; // Ensures it stays above everything else
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 5px;
+        .noscript-content {
+            font-size: 10px;
+            padding: 0.5rem;
+            border: 1px solid #02fefe; // Your brand cyan
+            border-radius: 5px;
+            h2 {
+                font-size: 14px;
+                color: #02fefe;
+            }
+            a {
+                display: inline-block;
+                // margin-top: 1rem;
+                color: white;
+                text-decoration: underline;            
+                &:hover {
+                    color: #02fefe;
+                }
+            }
+        }
+        .js-logo{
+            display:inline-block;
+            width:20px;
+        }
+    }
+    #close-noscript {
+        display: none;
+    }
+    .noscript-message-close{
+        position: absolute;
+        display: inline-block;
+        color: white;
+        background-color: red;
+        top: 0;
+        right: 0;
+        margin-top: 10px;
+        margin-right: 20px;
+        padding: 3px;
+        border: 1px solid white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    // * Use :has() to change the whole page (like your nav) */
+        body:has(#close-noscript:checked) .noscript-recommended  {            
+            display: none;
+        }
+// ================================ noscript JS recommended END   =================================
+
+// ================================ useful snippets START =================================
+    // Helps prevent unintended gaps in flex/block layouts
+        br {
+            content: "";
+            display: block;
+            margin-bottom: 0 !important;
+        }
+// ================================ useful snippets END   =================================
+
+// ============================== Box Sizing Reset ====================================
+    // creates a clean slate, unaffected by browser defaults
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            // border: 1px solid red; // Uncomment to debug layout issues
+        }
+// ============================== Box Sizing Reset ====================================
+
+// HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - 
+    html {
+        overflow-y: scroll; /* Forces the vertical scrollbar track to always stay visible */        
+        scroll-behavior: smooth; /* Makes clicking #section links slide instead of jump */
+        scrollbar-gutter: stable; /* Reserves space for the scrollbar, preventing layout shift */
+        -webkit-font-smoothing: antialiased; /* Makes text look crisper on Macs/iOS */
+        -moz-osx-font-smoothing: grayscale; // The Firefox equivalent of antialiased
+    /* Target the scrollbar itself */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+    /* The track (the background part) */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+    /* The thumb (the part you grab) */
+        ::-webkit-scrollbar-thumb {
+            background: darkslategrey; 
+            border-radius: 6px;
+            border: 3px solid #f1f1f1; /* Creates a nice padding effect around the thumb */            
+            &:hover {
+                background: #2c3e50; /* Slightly darker on hover */
+            }
+        }
+    }
+// HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - 
+
+/* BODY - BODY - BODY - BODY - BODY - BODY - BODY - BODY - BODY - BODY - BODY - BODY - BODY - BODY -  */
+body {
+        // push footer to bottom if no cotent
+            // this is also required on the <main> element
+                // main{
+                //     flex: 1; /* This tells the main area to "grow" and take up all empty space */
+                // }
+            // this is also required on the <main> element
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures the body is at least as tall as the screen */
+            margin: 0;
+        // push footer to bottom if no cotent
+    font-family: var(--font-family-global);
+    font-size: var(--font-size-body);
+    color:var(--color-body);
+    background-color: var(--background-global);
+    user-select: none;
+    box-sizing: border-box;
+
+}
+
+h2{
+    padding-top:5px;
+    padding-bottom:5px;
+}
+h3{
+    padding-top:5px;
+    padding-bottom:5px;
+}
+h4{
+    padding-top:5px;
+    padding-bottom:5px;
+}
+p{
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+// 
+
+// 🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕 header START 🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕
+header{
+    position:sticky;
+    top:0;
+    left:0;
+    width:100%;
+    margin:0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-header);
+    border-bottom: 1px solid blue;
+    box-sizing: border-box;   
+    z-index: $zIndex-header;
+    // border: 2px solid red;
+}
+.header-table{
+    display: table;
+    height:80px;
+    height:8rem;
+    height: fit-content;
+    // border:3px solid aqua;
+    .header-bgf-1{
+        color:navy;
+        text-shadow: 1px 1px white;
+        padding-top:0px;
+        padding-right:0px;
+        padding-bottom:0px;
+        padding-left:10px;
+        vertical-align: middle;
+        text-align: center;
+        font-family: var(--font-family-bgf);
+        font-size: var(--font-size-bgf1);
+        font-weight: 900;
+        /* border:1px solid red; */
+    }
+    .header-bgf-2{
+        color:white;
+        color:darkslategrey;
+        /* text-shadow: 1px 1px black; */
+        padding-top:0px;
+        padding-right:0px;
+        padding-bottom:10px;
+        padding-left:10px;
+        vertical-align: middle;
+        text-align: center;
+        font-size: var(--font-size-bgf2);
+        /* border:1px solid greenyellow; */
+    }
+}
+
+    // 🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭 navigation START 🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭
+        // 1. GLOBAL HIDING (Keep these outside the Nav)
+
+            // // Hide the radio buttons (Keep these outside the Nav)
+                input[type="radio"], [id^="radio-btn-"]{display: none;}
+
+            // Hide all content, example: <div id="page-01" class="page"> ... <div id="page-07" class="page">
+                div[id^="page-0"] {display: none;}
+                section[id^="page-"] {display: none;}
+                article[id^="page-"] {display: none;}
+
+                @each $id in "01", "02", "02-01", "02-02", "02-03", "02-04", "02-04-01", "02-04-02", "02-05", "03", "04", "05", "06", "07" {
+                    // 1. Show the Page Content
+                        body:has(#radio-btn-#{$id}:checked) #page-#{$id} {
+                            display: flex !important;
+                            flex-direction: column;
+                            animation: fadeIn 0.4s ease forwards;
+                        }
+                    // 2. Style the Active Label (The "You are here" indicator)
+                        body:has(#radio-btn-#{$id}:checked) nav label[for="radio-btn-#{$id}"] {
+                            border-bottom: 3px solid blue;
+                        }
+                }
+
+
+        // 2. NAVIGATION STRUCTURE
+        .nav-radio-label {
+            cursor: pointer;
+            width: fit-content;
+            margin-bottom: 10px;
+            border-bottom: 3px solid transparent;
+            &:hover {
+                border-bottom: 3px solid red;
+            }
+        }
+        header nav {
+            overflow: visible;
+            position: relative;
+            padding:3px;
+            margin:3px;
+            margin-right:5rem;
+            z-index: $zIndex-nav;
+            // The Top Level List
+            > ul {
+                // "header nav > ul" targets just this ul.
+                // "header nav ul" targets all ul no matter how deep they are nested.
+                // By using >, you are creating "style silos." You are saying: "Only apply these specific flex styles to the top list, and don't let them 'leak' down into the sub list."
+                list-style: none;
+                padding:3px;
+                margin:3px;
+                display: flex; 
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                column-gap: 20px;
+                // border: 1px solid red;
+                // Individual NAV items
+                > li {
+                    position: relative; // Anchor for absolute positioning
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    // float: left;
+                    // The Top Level Labels (Links)
+                    > label {
+                        display: block;
+                        width: fit-content;
+                        font-weight: bold;
+                        padding-top: 5px;
+                        padding-bottom: 5px;
+                        color: darkslategrey;
+                        cursor: pointer;
+                        border:2px solid transparent;
+                        border-bottom: 3px solid transparent;
+                        transition: all 0.2s ease;
+                        &:hover {
+                            border-bottom: 3px solid red;
+                            // border:2px solid darkslategrey;
+                        }
+                    }
+
+                    // THE SUB-MENU (The UL inside the LI)
+                    > ul {
+                        // overflow: visible;
+                        z-index: $zIndex-nav + 5;
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        width: 20ch;
+                        padding-left: 10px;
+                        background-color: var(--background-header, white);
+                        display: flex;
+                        flex-direction: column;
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                        // border: 1px solid blue;
+                        // Use these ONLY for the "Hover Intent" delay
+                            opacity: 0;
+                            visibility: hidden;
+                            pointer-events: none;
+                            transition: opacity 0.3s ease, visibility 0s linear 0.4s;
+                        // Use these ONLY for the "Hover Intent" delay
+                        // Sub-menu List Items
+                        > li {
+                            list-style: none;
+                            width: fit-content;
+                            width: 250px;
+                            > label {
+                                display: block;
+                                // left: 0;
+                                margin: 0;
+                                margin-bottom: 5px;
+                                // padding: 12px 15px;
+                                cursor: pointer;
+                                padding-left: 5px;
+                                padding-right: 5px;
+                                width: fit-content;
+                                border-bottom: 3px solid transparent;
+                                font-weight: normal;
+                                &:hover {
+                                    border-bottom: 3px solid red;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // 3. THE INTERACTION LOGIC (The Fix)
+
+        /* A. Show when Hovering the Parent LI */
+            header nav > ul > li:hover > ul {
+                opacity: 1 !important;
+                visibility: visible !important;
+                pointer-events: auto !important;
+                transition-delay: 0s !important;
+            }
+
+        // 4. ACTIVE STATE STYLING (The Corrected Version)
+        /* Instead of hiding them, just dim them or style the active one */
+        body:has([id^="radio-btn-02-"]:checked) label.services {
+            border-bottom: 3px solid darkslategrey; /* Keeps "Services" underlined when a sub-page is active */
+        }
+
+
+        // Keep your existing @each loop here, it handles the page switching perfectly!
+        @each $id in "01", "02", "02-01", "02-02", "02-03", "02-04", "02-05", "03", "04", "05", "06", "07" {
+            body:has(#radio-btn-#{$id}:checked) #page-#{$id} {
+                display: flex !important;
+                flex-direction: column;
+                animation: fadeIn 0.4s ease forwards;
+            }
+        }
+        // Universal display rule using Attribute Selector
+            body:has(input[type="radio"]:checked) {
+                // This finds the div whose ID matches the checked radio suffix
+                // Example: #radio-btn-01 matches #page-01
+                // color: red;
+                display: flex;
+            }
+        // Standard per-page activation
+            @each $id in "01", "02", "02-01", "02-02", "02-03", "02-04", "02-05", "03", "04", "05", "06", "07" {
+                body:has(#radio-btn-#{$id}:checked) #page-#{$id} {
+                    display: flex !important;
+                    flex-direction: column;
+                    animation: fadeIn 0.4s ease forwards;
+                }
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(5px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+        // 📲🧭📲🧭📲🧭📲🧭📲🧭 mobile navigation menu START 📲🧭📲🧭📲🧭📲🧭📲🧭
+            // 1. Desktop Styles (Default)
+            .nav-toggle-input, .nav-toggle-label, .nav-toggle-closer {
+                display:none;
+            }
+            .nav-toggle-closer {
+                background-color: rgba(0, 0, 0, 0.5); /* 50% black tint */
+                height: 100vh;
+                width: 100vw;
+                overflow: hidden;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: $zIndex-overlay;
+            }
+            @media screen and (orientation:portrait){
+
+                // .nav-toggle-input {
+                //     display:flex;
+                // }
+
+                /* When the menu is open, prevent the background from scrolling */
+                    body:has(.nav-toggle-input:checked) {
+                        overflow: hidden;
+                    }
+                    /* Only show the closer label on mobile when checked */
+                        .nav-toggle-input:checked ~ .nav-toggle-closer {
+                            display: block;
+                        }
+
+                .hero-images-x-4{
+                    display:none;
+                }
+
+                .nav-toggle-label{
+                    position: absolute;
+                    top:0;
+                    right:0;
+                    margin-top: 1rem;
+                    margin-right: 1rem;
+                    width:3rem;
+                    height:3rem;
+                    display:flex;
+                    justify-content: center;
+                    align-items: center;
+                    // color:navy;
+                    /* font-size: clamp(minimum,preferred,maximum); */
+                    font-size: clamp(2rem,3vw,4rem);
+                    // background-color: white;
+                    cursor:pointer;
+                    border-radius: 5%;
+                    // border:1px solid navy;
+                    // border:1px solid red;
+
+                }
+                header > nav{
+                    background-color: var(--background-header, white);
+                    position:fixed;
+                    padding:0;
+                    margin:0;
+                    top:0;
+                    left:0;
+                    transform:translateX(-1000px);
+                    border:1px solid blue;
+                    border-radius: 5px;
+                }
+                .nav-toggle-input:checked ~ header > nav{
+                    transform:translateX(0px);
+                    transition: transform 500ms ease-in-out;
+                }
+
+                header > nav > ul{
+
+                    display:flex;
+                    flex-direction: column;
+                    align-items:flex-start;
+                    justify-content: center;
+                    padding:0;
+                    margin:0;
+                    height:100%;
+
+                }
+                header > nav > ul > li{
+
+                    position: relative;
+                    padding-left:10px;
+                    padding-right:10px;
+                    padding-top: 10px;
+                    text-align: left;
+                    margin: 0px;
+                    width: 100%;
+                    // border: 1px solid green;
+
+                }
+                header > nav > ul > li > label{
+                    display: inline-block;
+                    &:hover, &:active {
+                        border-bottom: 3px solid red;
+                        // border:2px solid darkslategrey;
+                    }
+                }
+                header > nav > ul > li > ul{
+
+                    position:absolute;
+                    top:0;
+                    left:100%;
+                    border:1px solid blue;
+                    border-radius: 5px;
+                    // border: 1px solid green;
+                
+                }
+                header > nav > ul > li > ul > li{
+
+                    padding-left:10px;
+                    padding-right:10px;
+                    padding-top: 10px;
+                    margin: 0;
+                    width: 100%;
+                    border-bottom: 3px solid transparent;
+                    // border: 1px solid green;
+                    
+                }
+                header > nav > ul > li > ul > li > label{
+                    display: inline-block;
+                    &:hover, &:active {
+                        border-bottom: 3px solid red;
+                    }
+                }
+
+                // 📲🧕 header adjustments 🧕📲 START
+                    .header-bgf-1{
+                        text-align: left;
+                    }
+                    .header-bgf-2{
+                        text-align: left;
+                    }
+                // 📲🧕 header adjustments 🧕📲 END
+
+                // // 📲📃 conetent adjustments 📃📲 START
+                //     .section-welcome{
+                //         margin-left:15px;
+                //         margin-right:15px;
+                //     }
+                //     .section-welcome ul{
+                //         margin-left:55px;
+                //     }
+                //     .section-services{
+                //         margin-left:15px;
+                //         margin-right:15px;
+                //     }
+                //     .section-services ul{
+                //         margin-left:55px;
+                //         margin-right:15px;
+                //     }
+                //     .section-industries{
+                //         margin-left:15px;
+                //         margin-right:15px;
+                //     }
+                //     .section-industries ul{
+                //         margin-left:55px;
+                //         margin-right:15px;
+                //     }
+                //     .section-about-us{
+                //         margin-left:15px;
+                //         margin-right:15px;
+                //     }
+                //     .section-about-us ul{
+                //         margin-left:55px;
+                //         margin-right:15px;
+                //     }
+                //     .about-us-img-left,.about-us-img-middle{
+                //         width:40%;
+                //     }
+                //     .page-07-background{
+                //         /* position:fixed;
+                //         height:100vh;
+                //         opacity: 0.15; */
+                //     }
+                //     .section-management-team{
+                //         margin-left:15px;
+                //         margin-right:15px;
+                //     }
+                //     .section-management-team ul{
+                //         margin-left:55px;
+                //         margin-right:15px;
+                //     }
+                //     .section-contact-us{
+                //         /* margin-left:15px;
+                //         margin-right:15px; */
+                //     }
+                // // 📲📃 content adjustments 📃📲 END
+                
+            }
+        // 📲🧭📲🧭📲🧭📲🧭📲🧭 mobile navigation menu END   📲🧭📲🧭📲🧭📲🧭📲🧭
+    // 🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭 navigation END   🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭🧭
+// 🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕 header END   🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕🧕
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+.skip-link:focus { top: 0; }
+
+    main{
+        // push footer to bottom if no cotent
+            // this is also required on the <body> element
+                // display: flex;
+                // flex-direction: column;
+                // min-height: 100vh; /* Ensures the body is at least as tall as the screen */
+                // margin: 0;
+            // this is also required on the <body> element
+            flex: 1; /* This tells the main area to "grow" and take up all empty space */
+        // push footer to bottom if no cotent
+        box-sizing: border-box;
+    }
+
+// 🛝🖼️🛝🖼️🛝🖼️🛝🖼️🛝🖼️ slideshow START 🛝🖼️🛝🖼️🛝🖼️🛝🖼️🛝🖼️
+    .txtshow {
+        display: inline-block;
+        position: relative;
+        height: 50vh;
+        width: 100% !important;
+        margin: 0 !important;
+        overflow: hidden;
+        background-image: url("../media-partial/AdobeStock_618302552-20percent.jpg");
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-position: center;
+        border-bottom: 1px solid blue;
+        // border-radius:10px;
+        .txt {
+            position: absolute;        
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            // width: 100%;
+            text-align: center; 
+            opacity: 0;
+            animation: fadeCycle 20s infinite;
+            color:white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(4rem,6vw,8rem);;
+            font-weight: 900;
+            text-shadow: 2px 3px navy;
+            // 1️⃣ 100% animation cycle / 5 slides = 20% of the slideshow cycle for each slide 2️⃣ 5 slides into 20% = 4s animation delays
+        }
+    }
+
+    .slideshow {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        height: 400px;
+        overflow: hidden;
+    }
+
+    .slideshow img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        animation: fadeCycle 20s infinite;
+        // 1️⃣ 100% / 5slides = 20s per slideshow cycle 2️⃣ 5 slides into 20s = 4s animation delays
+    }
+
+    // /* Keeps the first image visible while the animation engine starts */
+    //     .slideshow img:first-child {
+    //         opacity: 1;
+    //     }
+
+    /* Delay each image so they follow one another */
+        /* Delays: Increments of 4s (20s total / 5 slides) */
+            .slideshow img:nth-child(1) { animation-delay: 0s; }
+            .slideshow img:nth-child(2) { animation-delay: 4s; }
+            .slideshow img:nth-child(3) { animation-delay: 8s; }
+            .slideshow img:nth-child(4) { animation-delay: 12s; }
+            .slideshow img:nth-child(5) { animation-delay: 16s; }
+
+        /* Delays: Increments of 4s (20s total / 5 texts) */
+            .txtshow span:nth-child(1) { animation-delay: 0s; }
+            .txtshow span:nth-child(2) { animation-delay: 4s; }
+            .txtshow span:nth-child(3) { animation-delay: 8s; }
+            .txtshow span:nth-child(4) { animation-delay: 12s; }
+            .txtshow span:nth-child(5) { animation-delay: 16s; }
+
+    @keyframes fadeCycle {
+        0%   { opacity: 0; }
+        5%   { opacity: 1; }  /* Fade in quickly over 1s*/
+        20%  { opacity: 1; }  /* Stay visible for 4s of the time */
+        25%  { opacity: 0; }  /* Fade out over 1s*/
+        100% { opacity: 0; }  /* Stay hidden for the rest of the loop, 20s */
+    }
+// 🛝🖼️🛝🖼️🛝🖼️🛝🖼️🛝🖼️ slideshow END   🛝🖼️🛝🖼️🛝🖼️🛝🖼️🛝🖼️
+
+// 📃📃📃📃📃📃📃📃📃📃📃📃 main content START 📃📃📃📃📃📃📃📃📃📃📃📃
+
+.page {
+    display:flex;
+    flex-direction: column;
+    align-items: center; // horizontal
+    justify-content: center; // vertical
+    // border:3px solid greenyellow;
+}
+
+.section-text-container {
+    position: relative;
+    width: 90%;          // Width for mobile
+    max-width: 800px;    // Limits width for desktop (similar to your 20% margins)    margin-top:10px;
+    margin: 10px auto;  // IF 2 values = top & bottom <> left and right ALSO margin: [top] [right] [bottom] [left];
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h3 {
+        display: block;
+        align-self: flex-start; // 👈 This pushes the H3 box to the left
+        text-align: left;       // This keeps the text inside left-aligned
+        width: 100%;            // Optional: ensures it takes up the full width
+        // border: 2px solid red;
+    }
+    p {
+        text-align: justify;
+        text-justify: inter-word; // Distributes space between words, not letters
+        hyphens: auto; // soft hyphen in HTML &shy;
+        // This tells the browser: "You can wiggle the letters a bit to save the layout"
+            text-rendering: optimizeLegibility; // ❗can slow down the UI ❗
+            font-feature-settings: "kern" 1;
+        // This tells the browser: "You can wiggle the letters a bit to save the layout"
+        // Line-height is crucial for justified text to look good
+            line-height: 1.6; 
+            margin-bottom: 1.2rem;
+        // Line-height is crucial for justified text to look good
+    }
+    ul{
+        padding-left:55px;
+        margin-left: 0;
+    }
+}
+.section-text-head {
+    width: 90%;          // Width for mobile
+    max-width: 800px;    // Limits width for desktop (similar to your 20% margins)    margin-top:10px;
+    height:5ch;
+    margin-bottom:10px;
+    padding: 10px;
+    text-align: center;
+    color:white;
+    font-size: var(--font-size-bgf2);
+    font-weight: 900;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image:linear-gradient(0deg,steelblue,navy);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
+    // border:3px solid greenyellow;
+}
+.section-text-head-advisory {
+    background-image: 
+        linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
+        url('../media-partial/service-advisory.jpg');
+}
+.section-text-head-audit {
+    background-image: 
+        linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
+        url('../media-partial/service-audit.jpg');
+}
+.section-text-head-tax-and-accounting {
+    background-image: 
+        linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
+        url('../media-partial/service-tax-and-accounting.jpg');
+}
+.section-text-head-portfolio {
+    background-image: 
+        linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
+        url('../media-partial/service-portfolio.jpg');
+}
+.section-text-head-virtual-cfo {
+    background-image: 
+        linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
+        url('../media-partial/service-virtual-cfo.jpg');
+}
+
+.section-hero{
+    // position: absolute;
+    top: 0;
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:auto;
+    gap:5px;
+    width: 100%;
+    padding:10px;
+    // border: 1px solid red;
+}
+.section-hero-item{
+    display:grid;
+    grid-template-columns: minmax(140px,40%) minmax(140px,40%);
+    grid-template-rows:auto;
+    grid-template-rows: repeat(auto-fill, auto); // This makes every row only as tall as the content inside it
+    grid-template-rows: min-content; // Forces the row to be the smallest height possible without the content overflowing.
+    grid-auto-rows: minmax(12ch, auto); // Minimum 12ch, maximum 'auto' (the size of the content)
+    justify-content: center;
+    gap:0px;
+    // border: 1px solid blue;
+    h2 {
+        border-top: 1px solid blue;
+        text-align: center;
+        // border: 2px solid deeppink;
+    }
+    p {
+        border-top: 1px solid blue;
+        text-align: center;
+        // text-align: justify;
+        // text-justify: inter-word; // Distributes space between words, not letters
+        // hyphens: auto; // soft hyphen in HTML &shy;
+        // // This tells the browser: "You can wiggle the letters a bit to save the layout"
+        //     text-rendering: optimizeLegibility; // ❗can slow down the UI ❗
+        //     font-feature-settings: "kern" 1;
+        // // This tells the browser: "You can wiggle the letters a bit to save the layout"
+        // // Line-height is crucial for justified text to look good
+        //     line-height: 1.6; 
+        //     margin-bottom: 1.2rem;
+        // // Line-height is crucial for justified text to look good
+        // border: 2px solid chartreuse;
+    }
+}
+
+.industry-pic{
+    height:5ch;
+    margin-bottom:10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display:flex;
+    align-items: center; // horizontal
+    justify-content: center; // vertical
+    flex-wrap: wrap;
+    text-align: center;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    // font-size: clamp(2rem,3vw,4rem);
+    font-weight: 900;
+    text-shadow: 2px 3px navy;
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    // border: 3px solid greenyellow;
+}
+.industry-pic-banking{
+    background-image: 
+        linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
+        url("../media-partial/industry-banking.jpg");
+}
+.industry-pic-cyber-security{
+    background-image: 
+        linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
+        url("../media-partial/industry-cyber-security.jpg");
+}
+.industry-pic-food{
+    background-image: 
+        linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
+        url("../media-partial/industry-food.jpg");
+}
+.industry-pic-legal-profession{
+    background-image: 
+        linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
+        url("../media-partial/industry-legal-profession.jpg");
+}
+.industry-pic-medical-profession{
+    background-image: 
+        linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
+        url("../media-partial/industry-medical-profession.jpg");
+}
+.industry-pic-transport-and-logistics{
+    background-image: 
+        linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
+        url("../media-partial/industry-transport-and-logistics.jpg");
+}
+
+.section-contact-us-row{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: center;
+    margin-top: 3%;
+    /* border:5px solid yellowgreen; */
+}
+.section-contact-us-row > div{
+    margin:auto;
+}
+.section-contact-us-col{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    gap:10px;
+    /* border:5px solid red; */
+
+}
+.google-map{
+    margin:10px;
+    border:2px solid navy;
+    position: relative;
+    background: #f0f0f0; // Placeholder color
+    border: 1px solid #ccc;
+        .noscript-overlay {
+            padding: 2rem;
+            text-align: center;
+            color: #333;
+            width: 600px;
+            height: 450px;            
+            .map-link {
+                display: inline-block;
+                margin-top: 1rem;
+                padding: 10px 20px;
+                background-color: darkslategrey;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;                
+                &:hover {
+                    background-color: navy;
+                }
+            }
+        }
+}
+
+// 💵💵💵💵💵💵💵💵💵💵💵💵💵💵💵 ATO links START 💵💵💵💵💵💵💵💵💵💵💵💵💵💵💵
+    .page-ato-links {
+        background-image: 
+            linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
+            url('../media-partial/ato-links-background.jpg');
+        // background-image: url('../media-partial/ato-links-background.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: fit-content;
+        .section-text-container-ato-links {
+            position: relative;
+            width: 90%;          // Width for mobile
+            max-width: 800px;    // Limits width for desktop (similar to your 20% margins)    margin-top:10px;
+            margin: 10px auto;  // IF 2 values = top & bottom <> left and right ALSO margin: [top] [right] [bottom] [left];
+            padding:10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            p {
+                text-align: justify;
+                text-justify: inter-word; // Distributes space between words, not letters
+                hyphens: auto; // soft hyphen in HTML &shy;
+                // This tells the browser: "You can wiggle the letters a bit to save the layout"
+                    text-rendering: optimizeLegibility; // ❗can slow down the UI ❗
+                    font-feature-settings: "kern" 1;
+                // This tells the browser: "You can wiggle the letters a bit to save the layout"
+                // Line-height is crucial for justified text to look good
+                    line-height: 1.6; 
+                    margin-bottom: 1.2rem;
+                // Line-height is crucial for justified text to look good
+            }
+            ul {
+                padding-left:55px;
+                margin-left: 0;
+                list-style: none;
+                padding: 0;
+                width: 90%;          // Width for mobile
+                max-width: fit-content;    // Limits width for desktop (similar to your 20% margins)        
+                li a {
+                    display: block;
+                    padding: 10px;
+                    color: navy;
+                    font-weight: 600;
+                    text-decoration: none;
+                    transition: transform 0.3s ease;
+                    border-bottom: 1px solid rgba(0,0,0,0.1); // Cleaner than red borders            
+                    &:hover {
+                        transform: translateX(10px);
+                        background: rgba(255, 255, 255, 0.5);
+                    }
+                }
+            }
+        }
+    }
+// 💵💵💵💵💵💵💵💵💵💵💵💵💵💵💵 ATO links END   💵💵💵💵💵💵💵💵💵💵💵💵💵💵💵
+
+.section-management-team-horizontal-line{
+    margin-top:15px;
+    margin-bottom:15px;
+    height:1px;
+    width:100%;
+    background-color: black;
+}
+
+// @media screen and (orientation:portrait){
+
+//     .section-welcome{
+//         margin-left:15px;
+//         margin-right:15px;
+//         ul {
+//             margin-left:55px;
+//             margin-right:15px;
+//         }
+//     }
+//     .section-services{
+//         margin-left:15px;
+//         margin-right:15px;
+//         ul {
+//             margin-left:55px;
+//             margin-right:15px;
+//         }
+//     }
+//     .section-industries{
+//         margin-left:15px;
+//         margin-right:15px;
+//         ul {
+//             margin-left:55px;
+//             margin-right:15px;
+//         }
+//     }
+//     .section-about-us{
+//         margin-left:15px;
+//         margin-right:15px;
+//         ul {
+//             margin-left:55px;
+//             margin-right:15px;
+//         }
+//         .about-us-img-left,.about-us-img-middle{
+//             width:40%;
+//         }
+//     }
+//     .section-management-team{
+//         margin-left:15px;
+//         margin-right:15px;
+//         ul {
+//             margin-left:55px;
+//             margin-right:15px;
+//         }         
+//     }
+//     .industry-pic-txt{
+//         // color:white;
+//         // font-family: Arial, Helvetica, sans-serif;
+//         // font-size: clamp(2rem,3vw,4rem);;
+//         // font-weight: 900;
+//         // text-shadow: 2px 3px navy;
+//         // text-align: center;
+//         display: block;
+//         font-size: clamp(1.5rem,2vw,3rem);;
+//     }
+// }
+// 📃📃📃📃📃📃📃📃📃📃📃📃 main content END 📃📃📃📃📃📃📃📃📃📃📃📃
+
+// 🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶 footer START 🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶
+    footer{
+        display:flex;
+        flex-direction: column;
+        color: var(--footer-color);
+        background-color: var(--footer-background-color);
+        padding:20px;
+        font-size: var(--font-size-footer);
+        box-sizing: border-box;
+        // border:2px solid black;
+    }
+    footer > address{
+        padding:10px;
+        // border:2px solid black;
+    }
+    footer > div{
+        padding:10px;
+        // border:2px solid black;
+    }
+    .footer-bar{
+
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content:space-evenly;
+        gap:20px;
+        padding-bottom:5px;
+        // border:2px solid black;
+    }
+    .material-icons{
+        font-size: var(--font-size-body) !important;
+        // border:2px solid black;
+    }
+    .material-symbols-outlined{
+        font-size: var(--font-size-body) !important;
+        // border:2px solid black;
+    }
+// 🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶 footer END   🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶
