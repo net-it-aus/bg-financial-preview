@@ -1068,7 +1068,7 @@ iframe {
 .page-ato-links {
   background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url("../media-partial/ato-links-background.jpg");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
   background-size: cover;
   height: fit-content;
 }
