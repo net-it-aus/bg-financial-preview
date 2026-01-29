@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded",async () => {
                     // (This is the biggest "iPhone issue" - menus staying open after navigation)
                     navLinks.forEach(link => {
                         link.addEventListener('click', () => {
-                            navToggle.checked = true;
+                            navToggle.checked = false;
                         });
                     });
 
