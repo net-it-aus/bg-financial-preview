@@ -421,9 +421,9 @@ header{
 
         // 📲🧭📲🧭📲🧭📲🧭📲🧭 mobile navigation menu START 📲🧭📲🧭📲🧭📲🧭📲🧭
             // 1. Desktop Styles (Default)
-            .nav-toggle-input, .nav-toggle-label, .nav-toggle-closer {
-                display:none;
-            }
+                .nav-toggle-input, .nav-toggle-label, .nav-toggle-closer {
+                    display:none;
+                }
             .nav-toggle-closer {
                 background-color: rgba(0, 0, 0, 0.5); /* 50% black tint */
                 height: 100vh;
@@ -436,22 +436,16 @@ header{
             }
             @media screen and (orientation:portrait){
 
-                // .nav-toggle-input {
-                //     display:flex;
-                // }
-
-                /* When the menu is open, prevent the background from scrolling */
-                    body:has(.nav-toggle-input:checked) {
-                        overflow: hidden;
-                    }
-                    /* Only show the closer label on mobile when checked */
+                // Display an overlay when menu is open on mobile devices
+                    // When the menu is open, prevent the background from scrolling
+                        body:has(.nav-toggle-input:checked) {
+                            overflow: hidden;
+                        }
+                    // Only show the closer label on mobile when checked
                         .nav-toggle-input:checked ~ .nav-toggle-closer {
                             display: block;
                         }
 
-                .hero-images-x-4{
-                    display:none;
-                }
 
                 .nav-toggle-label{
                     position: absolute;

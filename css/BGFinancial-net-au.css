@@ -646,16 +646,11 @@ body:has(#radio-btn-07:checked) #page-07 {
 }
 
 @media screen and (orientation: portrait) {
-  /* When the menu is open, prevent the background from scrolling */
   body:has(.nav-toggle-input:checked) {
     overflow: hidden;
   }
-  /* Only show the closer label on mobile when checked */
   .nav-toggle-input:checked ~ .nav-toggle-closer {
     display: block;
-  }
-  .hero-images-x-4 {
-    display: none;
   }
   .nav-toggle-label {
     position: absolute;

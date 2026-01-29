@@ -26,15 +26,18 @@ document.addEventListener("DOMContentLoaded",async () => {
         // Add event listeners START 🦻🦻🦻 ===================
 
             // 🦻 automate nav on mobile devices
-                const navToggle = document.getElementById('nav-toggle');
-                const navLinks = document.querySelectorAll('.nav-radio-label'); // Add this class to your <a> tags
-                // Close menu automatically when a link is clicked
-                    // (This is the biggest "iPhone issue" - menus staying open after navigation)
-                    navLinks.forEach(link => {
-                        link.addEventListener('click', () => {
-                            navToggle.checked = false;
-                        });
+                const navLinks = document.querySelectorAll('.nav-radio-label'); // Your menu links
+                const closer = document.querySelector('.nav-toggle-closer'); // The overlay label
+                const checkbox = document.getElementById('nav-toggle');
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        // Only 'click' the closer if the menu is actually open
+                        if (checkbox.checked) {
+                            closer.click(); 
+                        }
                     });
+                });
 
             // 🦻
                 window.addEventListener('resize', () => {
