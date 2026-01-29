@@ -851,53 +851,63 @@ header{
         url("../media-partial/industry-transport-and-logistics.jpg");
 }
 
-.section-contact-us-row{
-    display:flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    justify-content:center;
-    align-items: center;
-    margin-top: 3%;
-    /* border:5px solid yellowgreen; */
-}
-.section-contact-us-row > div{
-    margin:auto;
-}
+// 📞📬📧📞📬📧📞📬📧 contact us section START 📞📬📧📞📬📧📞📬📧
 .section-contact-us-col{
+    position: relative;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items: center;
     gap:10px;
-    /* border:5px solid red; */
-
+    padding: 10px;
+    margin: auto;
+    // border:3px solid red;
 }
 .google-map{
-    margin:10px;
-    border:2px solid navy;
+    display: inline-block;
     position: relative;
-    background: #f0f0f0; // Placeholder color
-    border: 1px solid #ccc;
-        .noscript-overlay {
-            padding: 2rem;
-            text-align: center;
-            color: #333;
-            width: 600px;
-            height: 450px;            
-            .map-link {
-                display: inline-block;
-                margin-top: 1rem;
-                padding: 10px 20px;
-                background-color: darkslategrey;
-                color: white;
-                text-decoration: none;
-                border-radius: 5px;                
-                &:hover {
-                    background-color: navy;
-                }
-            }
-        }
+    margin:10px;
+    width: 375px;
+    height: 375px;
+    border:2px solid navy;
+    // border: 3px solid yellow;
 }
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // border:5px solid chartreuse;
+}
+.noscript-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    text-align: center;
+    color: #333;
+    // max-width: 600px;
+    // height: 450px;  
+    p {
+        line-height: 1.5rem; 
+    }          
+    .map-link {
+        display: inline-block;
+        // margin-top: 0.5rem;
+        // padding: 5px 10px;
+        background-color: darkslategrey;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;                
+        &:hover {
+            background-color: navy;
+        }
+    }
+}
+// 📞📬📧📞📬📧📞📬📧 contact us section END   📞📬📧📞📬📧📞📬📧
 
 // 💵💵💵💵💵💵💵💵💵💵💵💵💵💵💵 ATO links START 💵💵💵💵💵💵💵💵💵💵💵💵💵💵💵
     .page-ato-links {
