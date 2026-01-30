@@ -700,7 +700,7 @@ header{
 .section-text-container {
     position: relative;
     width: 90%;          // Width for mobile
-    max-width: 800px;    // Limits width for desktop (similar to your 20% margins)    margin-top:10px;
+    max-width: 1000px;    // Limits width for desktop (similar to your 20% margins)    margin-top:10px;
     margin: 10px auto 0px;  // IF 2 values = top & bottom <> left and right ALSO margin: [top] [right] [bottom] [left];
     padding:10px;
     display: flex;
@@ -822,7 +822,8 @@ header{
     }
     p {
         border-top: 1px solid blue;
-        text-align: center;
+        text-align: left;
+        // text-align: center;
         // text-align: justify;
         // text-justify: inter-word; // Distributes space between words, not letters
         // hyphens: auto; // soft hyphen in HTML &shy;
@@ -839,7 +840,7 @@ header{
 }
 
 .industry-pic{
-    height:5ch;
+    height:10ch;
     margin-bottom:10px;
     padding-left: 20px;
     padding-right: 20px;
@@ -891,12 +892,25 @@ header{
 }
 
 // 📞📬📧📞📬📧📞📬📧 contact us section START 📞📬📧📞📬📧📞📬📧
+.section-contact-us-row{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: center;
+    margin-top: 3%;
+    /* border:5px solid yellowgreen; */
+}
+.section-contact-us-row > div{
+    margin:auto;
+    /* border:5px dashed yellowgreen; */
+}
 .section-contact-us-col{
     position: relative;
     display:flex;
     flex-direction:column;
     justify-content:center;
-    align-items: center;
+    align-items: left;
     gap:10px;
     padding: 10px;
     margin: auto;

@@ -892,7 +892,7 @@ main {
 .section-text-container {
   position: relative;
   width: 90%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 10px auto 0px;
   padding: 10px;
   display: flex;
@@ -1001,11 +1001,11 @@ main {
 }
 .section-hero-item p {
   border-top: 1px solid blue;
-  text-align: center;
+  text-align: left;
 }
 
 .industry-pic {
-  height: 5ch;
+  height: 10ch;
   margin-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
@@ -1049,12 +1049,27 @@ main {
   background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media-partial/industry-transport-and-logistics.jpg");
 }
 
+.section-contact-us-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3%;
+  /* border:5px solid yellowgreen; */
+}
+
+.section-contact-us-row > div {
+  margin: auto;
+  /* border:5px dashed yellowgreen; */
+}
+
 .section-contact-us-col {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   gap: 10px;
   padding: 10px;
   margin: auto;
