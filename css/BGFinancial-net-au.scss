@@ -11,11 +11,12 @@
     --font-family-global:Arial, Helvetica, sans-serif;;
     --font-family-bgf:'Roboto', sans-serif;
 
-    /* font-size: clamp(minimum,preferred,maximum); */
-    --font-size-body:clamp(1rem,2vw,1.5rem);
-    --font-size-bgf1:clamp(2rem,3vw,4rem);
-    --font-size-bgf2:clamp(1rem,2vw,3rem);
-    --font-size-footer:clamp(1rem,2vw,1rem);
+    /* font-size: clamp(minimum | the floor, growth rate % , maximum | ceiling); */
+    --font-size-body: clamp(1rem,2vw,1.5rem);
+    --font-size-bgf1: clamp(2rem,3vw,4rem);
+    --font-size-bgf2: clamp(1rem,2vw,3rem);
+    --font-size-section-text-head: clamp(2rem,2.5vw,3rem);
+    --font-size-footer: clamp(1rem,2vw,1rem);
 
     --color-body:navy;
     --color-body:darkslategrey;
@@ -37,13 +38,30 @@
         x:rgba(255, 0, 255, 0.5);
         x:rgba(255, 255, 0, 0.5);
     /* SLIDE BACKGROUND COLOR */
+
+    --spacer-height: 0px;
+
+}
+.spacer {
+    // height: var(--spacer-height);
+    width: 100%;
+    flex-grow: 1; /* This tells the spacer: "Take up every pixel of leftover room" */
+    font-size: 0;      /* Kills the height of the dots */
+    line-height: 0;    /* Kills the vertical space of the text */
+    overflow: hidden;  /* Ensures nothing spills into the footer */    // background-color: violet;
+}
+
+.container {
+    /* This accounts for the 'notch' or home bar on newer iPads/iPhones */
+        padding-bottom: env(safe-area-inset-bottom);
+    /* This accounts for the 'notch' or home bar on newer iPads/iPhones */
 }
 
 // 1. Define your stacking order
     $zIndex-overlay: 1000;
-    $zIndex-header:  1010; // Keeps the header (and hamburger) on top of everything
-    $zIndex-nav:     1020;
-    $zIndex-noscript:  1030;
+    $zIndex-noscript:  1010;
+    $zIndex-header:  1020; // Keeps the header (and hamburger) on top of everything
+    $zIndex-nav:     1030;
 
 // ================================ noscript JS recommended START =================================
     .noscript-recommended {
@@ -128,6 +146,8 @@
 
 // HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - HTML - 
     html {
+        min-height: 100vh; /* Ensures the body/html is at least as tall as the screen */
+        min-height: 100dvh; /* Ensures the body/html is at least as tall as the screen */
         overflow-y: scroll; /* Forces the vertical scrollbar track to always stay visible */        
         scroll-behavior: smooth; /* Makes clicking #section links slide instead of jump */
         scrollbar-gutter: stable; /* Reserves space for the scrollbar, preventing layout shift */
@@ -164,6 +184,7 @@ body {
             display: flex;
             flex-direction: column;
             min-height: 100vh; /* Ensures the body is at least as tall as the screen */
+            min-height: 100dvh; /* Ensures the body is at least as tall as the screen */
             margin: 0;
         // push footer to bottom if no cotent
     font-family: var(--font-family-global);
@@ -182,6 +203,7 @@ h2{
 h3{
     padding-top:5px;
     padding-bottom:5px;
+    margin-bottom: 5px;
 }
 h4{
     padding-top:5px;
@@ -427,7 +449,8 @@ header{
                 .nav-toggle-closer {
                     background-color: rgba(0, 0, 0, 0.5); /* 50% black tint */
                     height: 100vh;
-                    width: 100vw;
+                    height: 100dvh;
+                    width: 100%; // pro tip, use 100% here to avoid horizontal scrollbars appearing
                     overflow: hidden;
                     position: fixed;
                     top: 0;
@@ -575,6 +598,7 @@ header{
                 // display: flex;
                 // flex-direction: column;
                 // min-height: 100vh; /* Ensures the body is at least as tall as the screen */
+                // min-height: 100dvh; /* Ensures the body is at least as tall as the screen */
                 // margin: 0;
             // this is also required on the <body> element
             flex: 1; /* This tells the main area to "grow" and take up all empty space */
@@ -677,7 +701,7 @@ header{
     position: relative;
     width: 90%;          // Width for mobile
     max-width: 800px;    // Limits width for desktop (similar to your 20% margins)    margin-top:10px;
-    margin: 10px auto;  // IF 2 values = top & bottom <> left and right ALSO margin: [top] [right] [bottom] [left];
+    margin: 10px auto 0px;  // IF 2 values = top & bottom <> left and right ALSO margin: [top] [right] [bottom] [left];
     padding:10px;
     display: flex;
     flex-direction: column;
@@ -700,7 +724,7 @@ header{
         // This tells the browser: "You can wiggle the letters a bit to save the layout"
         // Line-height is crucial for justified text to look good
             line-height: 1.6; 
-            margin-bottom: 1.2rem;
+            // margin-bottom: 1.2rem;
         // Line-height is crucial for justified text to look good
     }
     ul{
@@ -711,12 +735,12 @@ header{
 .section-text-head {
     width: 90%;          // Width for mobile
     max-width: 800px;    // Limits width for desktop (similar to your 20% margins)    margin-top:10px;
-    height:5ch;
+    min-height:3ch;
     margin-bottom:10px;
     padding: 10px;
     text-align: center;
     color:white;
-    font-size: var(--font-size-bgf2);
+    font-size: var(--font-size-section-text-head);
     font-weight: 900;
     display:flex;
     flex-direction: column;
@@ -730,26 +754,41 @@ header{
     // border:3px solid greenyellow;
 }
 .section-text-head-advisory {
+    border: 1px solid grey;
+    text-shadow: 2px 3px navy;
+    min-height: 12vh;
     background-image: 
         linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
         url('../media-partial/service-advisory.jpg');
 }
 .section-text-head-audit {
+    border: 1px solid grey;
+    text-shadow: 2px 3px navy;
+    min-height: 12vh;
     background-image: 
         linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
         url('../media-partial/service-audit.jpg');
 }
 .section-text-head-tax-and-accounting {
+    border: 1px solid grey;
+    text-shadow: 2px 3px navy;
+    min-height: 12vh;
     background-image: 
         linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
         url('../media-partial/service-tax-and-accounting.jpg');
 }
 .section-text-head-portfolio {
+    border: 1px solid grey;
+    text-shadow: 2px 3px navy;
+    min-height: 12vh;
     background-image: 
         linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
         url('../media-partial/service-portfolio.jpg');
 }
 .section-text-head-virtual-cfo {
+    border: 1px solid grey;
+    text-shadow: 2px 3px navy;
+    min-height: 12vh;
     background-image: 
         linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)),
         url('../media-partial/service-virtual-cfo.jpg');
@@ -811,7 +850,7 @@ header{
     text-align: center;
     color:white;
     font-family: Arial, Helvetica, sans-serif;
-    // font-size: clamp(2rem,3vw,4rem);
+    font-size: clamp(1.5rem,2vw,2.5rem);
     font-weight: 900;
     text-shadow: 2px 3px navy;
     border-radius: 10px;
@@ -911,59 +950,68 @@ iframe {
 
 // 💵💵💵💵💵💵💵💵💵💵💵💵💵💵💵 ATO links START 💵💵💵💵💵💵💵💵💵💵💵💵💵💵💵
     .page-ato-links {
+        box-sizing: border-box;
         background-image: 
             linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
             url('../media-partial/ato-links-background.jpg');
         // background-image: url('../media-partial/ato-links-background.jpg');
+        background-attachment: fixed; // This pins the image to the viewport, not the content
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
-        height: fit-content;
-        .section-text-container-ato-links {
-            position: relative;
+        margin: 0px auto 0px;
+        // height: fit-content;
+        // border: 3px solid chartreuse;
+    }
+    .section-text-container-ato-links {
+        position: relative;
+        width: 90%;          // Width for mobile
+        max-width: 800px;    // Limits width for desktop (similar to your 20% margins)    margin-top:10px;
+        margin: 10px auto 0px;  // IF 2 values = top & bottom <> left and right ALSO margin: [top] [right] [bottom] [left];
+        padding:10px;
+        display: flex;
+        // height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p {
+            text-align: justify;
+            text-justify: inter-word; // Distributes space between words, not letters
+            hyphens: auto; // soft hyphen in HTML &shy;
+            // This tells the browser: "You can wiggle the letters a bit to save the layout"
+                text-rendering: optimizeLegibility; // ❗can slow down the UI ❗
+                font-feature-settings: "kern" 1;
+            // This tells the browser: "You can wiggle the letters a bit to save the layout"
+            // Line-height is crucial for justified text to look good
+                line-height: 1.6; 
+                margin-bottom: 1.2rem;
+            // Line-height is crucial for justified text to look good
+        }
+        ul {
+            padding-left:55px;
+            margin-left: 0;
+            list-style: none;
+            padding: 0;
             width: 90%;          // Width for mobile
-            max-width: 800px;    // Limits width for desktop (similar to your 20% margins)    margin-top:10px;
-            margin: 10px auto;  // IF 2 values = top & bottom <> left and right ALSO margin: [top] [right] [bottom] [left];
-            padding:10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            p {
-                text-align: justify;
-                text-justify: inter-word; // Distributes space between words, not letters
-                hyphens: auto; // soft hyphen in HTML &shy;
-                // This tells the browser: "You can wiggle the letters a bit to save the layout"
-                    text-rendering: optimizeLegibility; // ❗can slow down the UI ❗
-                    font-feature-settings: "kern" 1;
-                // This tells the browser: "You can wiggle the letters a bit to save the layout"
-                // Line-height is crucial for justified text to look good
-                    line-height: 1.6; 
-                    margin-bottom: 1.2rem;
-                // Line-height is crucial for justified text to look good
-            }
-            ul {
-                padding-left:55px;
-                margin-left: 0;
-                list-style: none;
-                padding: 0;
-                width: 90%;          // Width for mobile
-                max-width: fit-content;    // Limits width for desktop (similar to your 20% margins)        
-                li a {
-                    display: block;
-                    padding: 10px;
-                    color: navy;
-                    font-weight: 600;
-                    text-decoration: none;
-                    transition: transform 0.3s ease;
-                    border-bottom: 1px solid rgba(0,0,0,0.1); // Cleaner than red borders            
-                    &:hover {
-                        transform: translateX(10px);
-                        background: rgba(255, 255, 255, 0.5);
-                    }
+            max-width: fit-content;    // Limits width for desktop (similar to your 20% margins)        
+            li a {
+                display: block;
+                padding: 10px;
+                color: navy;
+                font-weight: 600;
+                text-decoration: none;
+                transition: transform 0.3s ease;
+                border-bottom: 1px solid rgba(0,0,0,0.1); // Cleaner than red borders            
+                &:hover {
+                    transform: translateX(10px);
+                    background: rgba(255, 255, 255, 0.5);
                 }
             }
         }
+    }
+    .section-text-head-ato-links {
+        margin-bottom: 0px !important;
+        // border: 3px solid red !important;
     }
 // 💵💵💵💵💵💵💵💵💵💵💵💵💵💵💵 ATO links END   💵💵💵💵💵💵💵💵💵💵💵💵💵💵💵
 
