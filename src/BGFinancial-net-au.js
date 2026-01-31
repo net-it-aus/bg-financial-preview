@@ -1,5 +1,29 @@
 window.consoleLog = false;
 
+const now = new Date()
+const localString = new Intl.DateTimeFormat(
+    undefined, // user’s locale automatically
+    {
+        dateStyle: "full",
+        timeStyle: "long"
+    }
+).format(now)
+console.log(localString)
+
+    function formatDateTime(value){ // 📅🕰 format date/time value 📅🕰
+        const date = new Date(value);
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZoneName: 'short'
+        };
+        return new Intl.DateTimeFormat(undefined, options).format(date);
+    }
+    
     function getDimensions(e){ // 📐📏 get dimensions of viewport and element e 📐📏
         if (!e) return {}; // Guard clause if element isn't found
         // Get viewport dimensions function START
@@ -143,6 +167,10 @@ document.addEventListener("DOMContentLoaded",async () => {
         window.addEventListener("load",async () => {
             // 2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣ START
                 if(window.consoleLog===true){console.log('Window load successsful.',new Date().toLocaleString());}
+
+                const meta = document.querySelector('meta[name="app-info"]')
+                const { version, buildId, buildDateOfficial } = meta.dataset;
+                console.log(`Version: ${version}, \nBuild: ${buildId}, \nBuild date: ${buildDateOfficial}, \nLast modified: ${formatDateTime(document.lastModified)}`);
 
                 await new Promise(resolve => setTimeout(resolve, 150)); // Simulated async process
                 await doAfterDOMandWindowLoaded();
