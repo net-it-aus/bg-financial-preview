@@ -782,7 +782,7 @@ main {
   width: 100% !important;
   margin: 0 !important;
   overflow: hidden;
-  background-image: url("../media-partial/AdobeStock_618302552-20percent.jpg");
+  background-image: url("../media/AdobeStock_618302552-20percent.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -944,35 +944,35 @@ main {
   border: 1px solid grey;
   text-shadow: 2px 3px navy;
   min-height: 12vh;
-  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media-partial/service-advisory.jpg");
+  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media/service-advisory.jpg");
 }
 
 .section-text-head-audit {
   border: 1px solid grey;
   text-shadow: 2px 3px navy;
   min-height: 12vh;
-  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media-partial/service-audit.jpg");
+  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media/service-audit.jpg");
 }
 
 .section-text-head-tax-and-accounting {
   border: 1px solid grey;
   text-shadow: 2px 3px navy;
   min-height: 12vh;
-  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media-partial/service-tax-and-accounting.jpg");
+  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media/service-tax-and-accounting.jpg");
 }
 
 .section-text-head-portfolio {
   border: 1px solid grey;
   text-shadow: 2px 3px navy;
   min-height: 12vh;
-  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media-partial/service-portfolio.jpg");
+  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media/service-portfolio.jpg");
 }
 
 .section-text-head-virtual-cfo {
   border: 1px solid grey;
   text-shadow: 2px 3px navy;
   min-height: 12vh;
-  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media-partial/service-virtual-cfo.jpg");
+  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media/service-virtual-cfo.jpg");
 }
 
 .section-hero {
@@ -1026,27 +1026,27 @@ main {
 }
 
 .industry-pic-banking {
-  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media-partial/industry-banking.jpg");
+  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media/industry-banking.jpg");
 }
 
 .industry-pic-cyber-security {
-  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media-partial/industry-cyber-security.jpg");
+  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media/industry-cyber-security.jpg");
 }
 
 .industry-pic-food {
-  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media-partial/industry-food.jpg");
+  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media/industry-food.jpg");
 }
 
 .industry-pic-legal-profession {
-  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media-partial/industry-legal-profession.jpg");
+  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media/industry-legal-profession.jpg");
 }
 
 .industry-pic-medical-profession {
-  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media-partial/industry-medical-profession.jpg");
+  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media/industry-medical-profession.jpg");
 }
 
 .industry-pic-transport-and-logistics {
-  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media-partial/industry-transport-and-logistics.jpg");
+  background-image: linear-gradient(rgba(179, 179, 179, 0.75), rgba(179, 179, 179, 0.75)), url("../media/industry-transport-and-logistics.jpg");
 }
 
 .section-contact-us-row {
@@ -1118,7 +1118,7 @@ iframe {
 
 .page-ato-links {
   box-sizing: border-box;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url("../media-partial/ato-links-background.jpg");
+  background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url("../media/ato-links-background.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center center;

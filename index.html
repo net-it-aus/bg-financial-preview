@@ -2,6 +2,7 @@
 <html lang="en" class="assume-noscript-status-is-true">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="content-language" content="en">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta http-equiv="Content-Security-Policy" content="
@@ -13,7 +14,9 @@
         frame-src https://www.google.com https://maps.google.com;
         img-src 'self' https://*.googleapis.com https://*.gstatic.com *.google.com *.googleusercontent.com data:;
     ">
-    <!-- <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"> -->
+    <!-- X-Frame-Options may only be set via an HTTP header sent along with a document. It may not be set inside <meta>. -->
+        <!-- <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"> -->
+    <!-- X-Frame-Options may only be set via an HTTP header sent along with a document. It may not be set inside <meta>. -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     
     <meta name="description" content="Offering: Business Advisory; Tax and accounting; Superannuation; Audit and assurance; Virtual CFO; Services.">
@@ -32,10 +35,19 @@
     <meta property="og:title" content="BG Financial Group - Felicia Jamieson">
     <meta property="og:image" content="https://bgfinancial.net.au/images/og-image.jpg">
     <meta property="og:description" content="Offering: Business Advisory; Tax and accounting; Superannuation; Audit and assurance; Virtual CFO; Services.">
+    <meta property="og:type" content="website">
+    <!-- part of the Twitter Cards protocol. Without them, X will try to "guess" what your page is about by pulling random text -->
+        <meta name="twitter:description" content="Offering: Business Advisory; Tax and accounting; Superannuation; Audit and assurance; Virtual CFO; Services.">
+        <meta name="twitter:title" content="BG Financial Group - Felicia Jamieson">
+    <!-- part of the Twitter Cards protocol. Without them, X will try to "guess" what your page is about by pulling random text -->
+    <link rel="icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <meta name="date" content="2026-01-31 18:00:00">
     <title>BG Financial Group</title>
     
-    <link rel="stylesheet" href="./css/BGFinancial-net-au.css" type="text/css">
-    <script src="./js/BGFinancial-net-au.js"  type="text/javascript" defer></script>
+    <link rel="stylesheet" href="./styles/BGFinancial-net-au.css" type="text/css">
+    <script src="./src/BGFinancial-net-au.js"  type="text/javascript" defer></script>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
@@ -101,7 +113,7 @@
     <noscript>
         <div class="noscript-recommended">
             <div class="noscript-content">
-                <img src="./media-partial/JS.png" class="js-logo">
+                <img src="./media/JS.png" class="js-logo">
                 <input type="checkbox" id="close-noscript" class="close-noscript"></input>
                 <label for="close-noscript" class="noscript-message-close">X</label>
                 <h2>JavaScript Recommended</h2>

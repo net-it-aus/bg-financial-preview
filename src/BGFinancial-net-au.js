@@ -1,4 +1,4 @@
-window.consoleLog = true;
+window.consoleLog = false;
 
     function getDimensions(e){ // 📐📏 get dimensions of viewport and element e 📐📏
         if (!e) return {}; // Guard clause if element isn't found
@@ -35,16 +35,16 @@ window.consoleLog = true;
 
 // Adjust if Page 06 selected START
     function getPage06SpacerHeight(){
-        console.log(`getPage06SpacerHeight() called`,new Date().toLocaleString());
+        if(window.consoleLog===true){console.log(`getPage06SpacerHeight() called`,new Date().toLocaleString());}
         // alert(`getPage06SpacerHeight() called`);
         // if(event.target.id.toLowerCase() === 'radio-btn-06') {
-            console.log('Page 6 selected. Updating dimensions...');
+            if(window.consoleLog===true){console.log('Page 6 selected. Updating dimensions...');}
             // Give the browser a tiny moment to render the new display: block
             requestAnimationFrame(async () => {
                 // const e = document.getElementsByClassName('page-ato-links');
                 const e = document.querySelector('.page-ato-links');
-                console.log(e);
-                console.log(getDimensions(e));
+                if(window.consoleLog===true){console.log(e);}
+                if(window.consoleLog===true){console.log(getDimensions(e));}
                 const jso = getDimensions(e);
 // // REMOVE FOR PRODUCTION ❔ insert a slight delay to allow the page to render so that dimensions are accurate
                                         await new Promise(resolve => setTimeout(resolve, 150)); // Simulated async process
@@ -84,7 +84,7 @@ window.consoleLog = true;
                 document.querySelector('.spacer').style.height = `${spacerHeight}px`;
             });
         // } else {
-        //     console.log('Page 6 not selected. No adjustment needed.');
+        //     if(window.consoleLog===true){console.log('Page 6 not selected. No adjustment needed.');}
         //     document.documentElement.style.setProperty('--spacer-height', `0px`);
         //     document.querySelector('.spacer').style.height = `0px`;
         //     e.style.height = `100%`;
@@ -105,13 +105,13 @@ window.consoleLog = true;
                 function updateLayout() {
                     // const isLandscape = window.matchMedia("(orientation: landscape)").matches;
                     const page06RadioBtn = document.getElementById('radio-btn-06');
-                    // console.log(`System Check: ${isLandscape ? 'Landscape' : 'Portrait'} | Page 6 is active: ${page06RadioBtn.checked}`);
-                    console.log(`Page 6 is active: ${page06RadioBtn.checked}`);
+                    // if(window.consoleLog===true){console.log(`System Check: ${isLandscape ? 'Landscape' : 'Portrait'} | Page 6 is active: ${page06RadioBtn.checked}`);]
+                    if(window.consoleLog===true){console.log(`Page 6 is active: ${page06RadioBtn.checked}`);}
                     // Specific logic for Page-06
                         if (page06RadioBtn.checked === true) {
                             const spacerHeight = getPage06SpacerHeight();
                         } else {
-                            console.log('Page 6 not selected. No adjustment needed.');
+                            if(window.consoleLog===true){console.log('Page 6 not selected. No adjustment needed.');}
                             document.documentElement.style.setProperty('--spacer-height', `0px`);
                             document.querySelector('.spacer').style.height = `0px`;
                         }
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded",async () => {
             // 2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣2️⃣ START
                 if(window.consoleLog===true){console.log('Window load successsful.',new Date().toLocaleString());}
 
-                await new Promise(resolve => setTimeout(resolve, 500)); // Simulated async process
+                await new Promise(resolve => setTimeout(resolve, 150)); // Simulated async process
                 await doAfterDOMandWindowLoaded();
 
                 // Add event listeners START 🦻🦻🦻 ===================
@@ -157,11 +157,11 @@ document.addEventListener("DOMContentLoaded",async () => {
                             label.addEventListener('click', (event) => {
                                 // Only 'click' the closer if the menu is actually open
                                     if (navCheckboxToggle.checked) {
-                                        // console.log('Mobile nav menu will now close.',event.target.classList);
+                                        // if(window.consoleLog===true){console.log('Mobile nav menu will now close.',event.target.classList);}
                                         const classes = event.target.classList;
                                         if(classes.contains('nav-radio-label') && classes.contains('services')){
                                         } else {
-                                            // console.log('Confirmed: nav-radio-label was clicked.');
+                                            // if(window.consoleLog===true){console.log('Confirmed: nav-radio-label was clicked.');}
                                             // closer.click();
                                             navCheckboxToggle.checked = false; // Close the menu
                                         }
