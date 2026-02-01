@@ -25,7 +25,6 @@ script-src-attr 'none';
 upgrade-insecure-requests;
 frame-ancestors 'self';
 ">
-
 <!-- "X-Frame-Options" and "X-Content-Type-Options" may only be set via an HTTP header sent along with a document. It may not be set inside <meta>. -->
     <!-- <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"> 
     ... replace it with:-
@@ -34,6 +33,9 @@ frame-ancestors 'self';
     -->
     <!-- <meta http-equiv="X-Content-Type-Options" content="nosniff"> -->
 <!-- "X-Frame-Options" and "X-Content-Type-Options" may only be set via an HTTP header sent along with a document. It may not be set inside <meta>. -->
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=(), browsing-topics=()">
+<meta name="referrer" content="same-origin">
+<meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
 
 <meta name="description" content="Offering: Business Advisory; Tax and accounting; Superannuation; Audit and assurance; Virtual CFO; Services.">
 <!-- Person JSON-LD -->
@@ -431,6 +433,16 @@ frame-ancestors 'self';
             <div id="copyright-notice"></div>
         </div>
     </footer>
-
+    <div id="meta-popup" class="meta-popup" role="dialog" aria-labelledby="meta-title">
+        <div id="printable-area" class="meta-content">
+            <h2 id="meta-title">Site Technical Audit</h2>
+            <h6 id="meta-sub-title"><i>Courtesy of:</i> Net IT Australia</h6>
+            <!-- <h6><i>This popup displays metadata and structured data (JSON-LD) from this website for auditing purposes.</i></h6> -->
+            <!-- <p>Metadata.</p> -->
+            <hr>
+            <div id="meta-list"></div>
+            <button id="close-meta-popup-btn" class="close-meta-popup-btn no-print">Close [Esc]  |  Print [Ctrl + p]</button>
+        </div>
+    </div>
 </body>
 </html>

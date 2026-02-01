@@ -1087,3 +1087,138 @@ iframe {
         border-top: 1px solid silver;
     }
 // 🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶 footer END   🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶
+
+// 🚦⛔🚦⛔🚦⛔🚦⛔🚦⛔ site meta data START 🚦⛔🚦⛔🚦⛔🚦⛔🚦⛔
+    .meta-popup {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(5px);
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        &.active {
+            display: flex;
+        }
+    }
+
+    .meta-content {
+        background: #1a1a1a;
+        color: #00ff41; /* "Matrix" green for a technical feel */
+        color: skyblue; /* "Matrix" green for a technical feel */
+        padding: 2rem;
+        border-radius: 8px;
+        border: 1px solid #333;
+        max-width: 80%;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .meta-item {
+        margin: 10px 0;
+        font-family: monospace;
+        font-size: 0.9rem;
+    }
+
+    .meta-key { color: #aaa; }
+    .meta-val { color: #fff; margin-left: 10px; word-break: break-all; }
+
+    .close-meta-popup-btn {
+        margin-top: 20px;
+        background: #444;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    @media print {
+        /* 1. Hide EVERYTHING except the popup */
+        body > *:not(#meta-popup) {
+            display: none !important;
+        }
+
+        /* 2. Strip the 'Fixed' and 'Blurred' container styles */
+        #meta-popup {
+            position: static !important;
+            display: block !important;
+            background: white !important;
+            height: auto !important;
+            width: 100% !important;
+        }
+
+        /* Force all titles inside the popup to be black for printing */
+    .meta-content h2, 
+    .meta-content h3, 
+    .meta-content h6, 
+    .meta-content p,
+    .meta-content div {
+        color: #000 !important;
+        -webkit-print-color-adjust: exact; /* Forces Chrome to respect the color change */
+        print-color-adjust: exact;
+    }
+
+    /* Ensure the JSON header specifically is black */
+    #meta-list h3 {
+        color: #000 !important;
+        margin-top: 20px !important;
+        border-bottom: 1px solid #000 !important;
+    }
+    
+        .meta-content {
+            position: static !important;
+            background: white !important;
+            color: black !important; /* Save the client's ink! */
+            width: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+            overflow: visible !important;
+            box-shadow: none !important;
+            // padding: 0 !important;
+            padding-left: 5px;
+        }
+
+        /* 3. Style the Meta Items for the page */
+        .meta-item {
+            display: block !important;
+            width: 100% !important;
+            break-inside: avoid !important; /* Prevents one item splitting mid-text */
+            border-bottom: 1px solid #eee;
+            // padding: 10px 0;
+            padding-left: 5px !important;
+        }
+        .meta-item div {
+            color: #333 !important; /* Dark grey for descriptions */
+            font-size: 9pt !important;
+            padding-left: 0 !important;
+            margin-top: 2px !important;
+            // margin-bottom: 10px !important;
+            border-bottom: 1px dotted #ccc; /* Adds a nice separator between items */
+        }
+
+        .meta-key { color: #555 !important; font-weight: bold; }
+        .meta-val { color: #000 !important; }
+
+        /* 4. Force JSON blocks to wrap correctly */
+        pre {
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+            border: 1px solid #ccc !important;
+            background: #f9f9f9 !important;
+            color: #333 !important;
+            font-size: 10pt !important;
+        }
+
+        .no-print {
+            display: none !important;
+        }
+
+        @page {
+            size: A4 portrait; /* Usually better for lists, change to landscape if preferred */
+            margin: 2cm;
+        }
+    }
+// 🚦⛔🚦⛔🚦⛔🚦⛔🚦⛔ site meta data END   🚦⛔🚦⛔🚦⛔🚦⛔🚦⛔
