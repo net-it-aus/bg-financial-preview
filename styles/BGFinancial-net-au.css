@@ -166,6 +166,12 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: underline;
+  color: inherit;
+  border-bottom: 1px solid inherit;
+}
+
 h2 {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -903,7 +909,7 @@ main {
 .section-text-container h3 {
   display: block;
   align-self: flex-start;
-  text-align: left;
+  text-align: center;
   width: 100%;
 }
 .section-text-container p {
@@ -1056,6 +1062,7 @@ main {
   justify-content: center;
   align-items: center;
   margin-top: 3%;
+  color: var(--color-body);
   /* border:5px solid yellowgreen; */
 }
 
@@ -1213,6 +1220,10 @@ footer > div {
 
 .material-symbols-outlined {
   font-size: var(--font-size-body) !important;
+}
+
+.footer-bar-bottom {
+  border-top: 1px solid silver;
 }
 
 /*# sourceMappingURL=BGFinancial-net-au.css.map */

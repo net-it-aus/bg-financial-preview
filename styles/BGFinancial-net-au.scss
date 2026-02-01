@@ -196,6 +196,12 @@ body {
 
 }
 
+a {
+    text-decoration: underline;
+    color: inherit;
+    border-bottom: 1px solid inherit;
+}
+
 h2{
     padding-top:5px;
     padding-bottom:5px;
@@ -710,7 +716,7 @@ header{
     h3 {
         display: block;
         align-self: flex-start; // 👈 This pushes the H3 box to the left
-        text-align: left;       // This keeps the text inside left-aligned
+        text-align: center;
         width: 100%;            // Optional: ensures it takes up the full width
         // border: 2px solid red;
     }
@@ -899,6 +905,7 @@ header{
     justify-content:center;
     align-items: center;
     margin-top: 3%;
+    color: var(--color-body);
     /* border:5px solid yellowgreen; */
 }
 .section-contact-us-row > div{
@@ -1075,5 +1082,8 @@ iframe {
     .material-symbols-outlined{
         font-size: var(--font-size-body) !important;
         // border:2px solid black;
+    }
+    .footer-bar-bottom {
+        border-top: 1px solid silver;
     }
 // 🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶 footer END   🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶

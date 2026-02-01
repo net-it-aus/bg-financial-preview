@@ -2,30 +2,41 @@
 <html lang="en" class="assume-noscript-status-is-true">
 <head>
 
-    <meta name="app-info"
-        data-version="2.0.1"
-        data-build-id="2"
-        data-build-date-official="2026-01-31">
+<meta name="app-info"
+    data-version="2.0.1"
+    data-build-id="2"
+    data-build-date-official="2026-01-31">
 
-    <meta charset="UTF-8">
-    <meta http-equiv="content-language" content="en">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self'; 
-        script-src 'self' 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE=';
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
-        font-src 'self' https://fonts.gstatic.com; 
-        style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com;
-        frame-src https://www.google.com https://maps.google.com;
-        img-src 'self' https://*.googleapis.com https://*.gstatic.com *.google.com *.googleusercontent.com data:;
-    ">
-    <!-- X-Frame-Options may only be set via an HTTP header sent along with a document. It may not be set inside <meta>. -->
-        <!-- <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"> -->
-    <!-- X-Frame-Options may only be set via an HTTP header sent along with a document. It may not be set inside <meta>. -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    
-    <meta name="description" content="Offering: Business Advisory; Tax and accounting; Superannuation; Audit and assurance; Virtual CFO; Services.">
+<meta http-equiv="Content-Security-Policy" content="
+default-src 'self';
+script-src 'self' 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE=';
+style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+font-src 'self' https://fonts.gstatic.com;
+frame-src https://www.google.com https://maps.google.com https://www.gstatic.com;
+img-src 'self' https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.googleusercontent.com data:;
+connect-src 'self' https://maps.googleapis.com https://maps.gstatic.com https://www.google.com;
+object-src 'none';
+base-uri 'self';
+form-action 'self';
+script-src-attr 'none';
+upgrade-insecure-requests;
+frame-ancestors 'self';
+">
+
+<!-- "X-Frame-Options" and "X-Content-Type-Options" may only be set via an HTTP header sent along with a document. It may not be set inside <meta>. -->
+    <!-- <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"> 
+    ... replace it with:-
+    frame-ancestors 'self';
+    Because frame-ancestors (CSP) replaces X-Frame-Options in modern browsers.
+    -->
+    <!-- <meta http-equiv="X-Content-Type-Options" content="nosniff"> -->
+<!-- "X-Frame-Options" and "X-Content-Type-Options" may only be set via an HTTP header sent along with a document. It may not be set inside <meta>. -->
+
+<meta name="description" content="Offering: Business Advisory; Tax and accounting; Superannuation; Audit and assurance; Virtual CFO; Services.">
+<!-- Person JSON-LD -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -37,28 +48,59 @@
             ]
         }
     </script>
-    <link rel="canonical" href="https://bgfinancial.net.au/" />
-    <!-- Open Graph (OG) metadata. -->
-        <meta property="og:title" content="BG Financial Group - Felicia Jamieson">
-        <meta property="og:description" content="Offering: Business Advisory; Tax and accounting; Superannuation; Audit and assurance; Virtual CFO; Services.">
-        <meta property="og:image" content="https://bgfinancial.net.au/images/og-image.jpg">
-        <meta property="og:url" content="https://bgfinancial.net.au">
-        <meta property="og:type" content="website">
-    <!-- Open Graph (OG) metadata. -->
-    <link rel="icon" href="favicon.ico">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="favicon.ico">
-    <meta name="date" content="2026-01-31 18:00:00">
-    <title>BG Financial Group</title>
-    
-    <link rel="stylesheet" href="./styles/BGFinancial-net-au.css" type="text/css">
-    <script src="./src/BGFinancial-net-au.js"  type="text/javascript" defer></script>
+<!-- Organisation JSON-LD -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "BG Financial Group",
+            "url": "https://bgfinancial.net.au",
+            "logo": "https://bgfinancial.net.au/images/logo.png",
+            "sameAs": [
+                "https://au.linkedin.com/in/felicia-jamieson-0590591b"
+            ],
+            "contactPoint": [
+                {
+                    "@type": "ContactPoint",
+                    "telephone": "+61292219393",
+                    "contactType": "customer service"
+                },
+                {
+                    "@type": "ContactPoint",
+                    "telephone": "+61292211208",
+                    "contactType": "customer service"
+                }
+            ]
+        }
+    </script>
+<meta name="robots" content="index, follow"> <!-- → explicit for search engines -->
+<meta name="author" content="Felicia Jamieson"> <!-- → minor SEO boost -->
+<link rel="canonical" href="https://bgfinancial.net.au/">
+<meta name="keywords" content="business advisory, tax, accounting, superannuation, audit, CFO services">
+<!-- Open Graph (OG) metadata. -->
+<meta property="og:site_name" content="BG Financial Group">
+<meta property="og:title" content="BG Financial Group - Felicia Jamieson">
+<meta property="og:description" content="Offering: Business Advisory; Tax and accounting; Superannuation; Audit and assurance; Virtual CFO; Services.">
+<meta property="og:image" content="https://bgfinancial.net.au/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://bgfinancial.net.au">
+<meta property="og:locale" content="en_AU">
+<meta property="og:type" content="website">
+<!-- Open Graph (OG) metadata. -->
+<link rel="icon" href="favicon.ico">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="favicon.ico">
+<title>BG Financial Group</title>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    
-    <meta name="format-detection" content="telephone=no">
-    
+<link rel="stylesheet" href="./styles/BGFinancial-net-au.css" type="text/css">
+<script src="./src/BGFinancial-net-au.js" type="text/javascript" defer></script>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+<meta name="format-detection" content="telephone=no">
+
 </head>
 <body>
     
@@ -257,7 +299,7 @@
         <section id="page-03" class="page">
             <div class="section-text-container">
                 <h2 class="section-text-head">Industry Participation.</h2>
-                <h3 style="text-align: center;">Our clients are involved in the following industries.</h3>
+                <h3>Our clients are involved in the following industries.</h3>
                 <div class="industry-list">
                     <div class="industry-pic industry-pic-banking">Banking &amp financial services</div>
                     <div class="industry-pic industry-pic-cyber-security">Cybersecurity</div>
@@ -285,16 +327,16 @@
                     <div class="section-contact-us-col">
                         <address>
                             <span class="material-symbols-outlined" >local_post_office</span><br>
-                            <span style="color:var(--color-body)">Suite 59, Level 11<br>88 Pitt Street,<br>Sydney NSW 2000</span>
+                            <span>Suite 59, Level 11<br>88 Pitt Street,<br>Sydney NSW 2000</span>
                         </address>
                         <div>
                             <span class="material-icons">phone</span><br>
-                            <a href="tel:+61292219393" style="color:var(--color-body)"><b>T </b>+61 02 9221 9393</a><br>
-                            <a href="tel:+61292211208" style="color:var(--color-body)"><b>T </b>+61 02 9221 1208</a>
+                            <a href="tel:+61292219393" class="txt-dec-no"><b>T </b>+61 02 9221 9393</a><br>
+                            <a href="tel:+61292211208" class="txt-dec-no"><b>T </b>+61 02 9221 1208</a>
                         </div>
                         <div>
                             <span class="material-icons">mail</span><br>
-                            <a href="mailto:info@bgfinancial.net.au" style="color:var(--color-body)">info@bgfinancial.net.au</a>
+                            <a href="mailto:info@bgfinancial.net.au" class="txt-dec-no">info@bgfinancial.net.au</a>
                         </div>
                     </div>
                     <div class="google-map">
@@ -377,14 +419,14 @@
             </address>
             <div>
                 <span class="material-icons">phone</span><br>
-                <div style="padding-top:8px;"><a href="tel:+61292219393" style="color:rgb(230,240,255);"><b>T </b>+61 02 9221 9393</a></div>
-                <div style="padding-top:8px;"><a href="tel:+61292211208" style="color:rgb(230,240,255);"><b>T </b>+61 02 9221 1208</a></div>
+                <div><a href="tel:+61292219393" class="txt-dec-no"><b>T </b>+61 02 9221 9393</a></div>
+                <div><a href="tel:+61292211208" class="txt-dec-no"><b>T </b>+61 02 9221 1208</a></div>
             </div>
             <div>
-                <span class="material-icons">mail</span><br><a href="mailto:info@bgfinancial.net.au" style="color:rgb(230,240,255)">info@bgfinancial.net.au</a>
+                <span class="material-icons">mail</span><br><a href="mailto:info@bgfinancial.net.au" class="txt-dec-no">info@bgfinancial.net.au</a>
             </div>
         </div>
-        <div style="border-top:1px solid rgba(255,255,255,.5);">
+        <div class="footer-bar-bottom">
             <p>BG Financial Group Pty Ltd (ACN 609 307 208) is a corporation for the purposes of the Corporations Act 2001.  Liability limited by a Scheme approved under Professional Standards Legislation.</p>
             <div id="copyright-notice"></div>
         </div>
