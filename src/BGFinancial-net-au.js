@@ -122,7 +122,7 @@ console.log(localString)
                     color: '#fff' },
                 { 
                     attr: 'name="referrer"', 
-                    expected: 'no-referer',
+                    expected: 'no-referrer',
                     label: 'Referrer Privacy Policy ( Outbound Privacy Control )', 
                     // desc: 'Referrer Privacy Policy controls how much information is shared when a visitor clicks a link to another website. It helps protect your privacy by limiting the details shared with those external sites. This improves privacy and reduces data leakage, particularly when linking to external platforms like social media or directories. In this context "same-origin" means that only links to pages within the same website will share full referrer details; links to other websites will share minimal information.',
                     // desc: 'Ensures that no referring page information is shared when users leave the site. For example, when a visitor clicks a link to the ATO website, the ATO receives no information about which page on this site the visitor came from.',
