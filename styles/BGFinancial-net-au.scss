@@ -720,7 +720,7 @@ header{
         width: 100%;            // Optional: ensures it takes up the full width
         // border: 2px solid red;
     }
-    p {
+    p, ul {
         text-align: justify;
         text-justify: inter-word; // Distributes space between words, not letters
         hyphens: auto; // soft hyphen in HTML &shy;
@@ -742,6 +742,9 @@ header{
     h3 {
         text-align: left;
     }
+    // ul {
+    //     line-height: 1.6; // to match the p line-height
+    // }
 }
 .section-text-head {
     width: 90%;          // Width for mobile

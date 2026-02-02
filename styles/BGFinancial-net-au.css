@@ -912,7 +912,7 @@ main {
   text-align: center;
   width: 100%;
 }
-.section-text-container p {
+.section-text-container p, .section-text-container ul {
   text-align: justify;
   text-justify: inter-word;
   hyphens: auto;
