@@ -31,5 +31,6 @@
             "statusBar.foreground":"#0901ff",
             "statusBar.background":"#01d5ff",
         // bottom status bar END
-    }
+    },
+    "liveServer.settings.port": 5501
 }

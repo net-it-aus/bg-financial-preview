@@ -925,6 +925,10 @@ main {
   margin-left: 0;
 }
 
+.section-text-container-management-team h3 {
+  text-align: left;
+}
+
 .section-text-head {
   width: 90%;
   max-width: 800px;
