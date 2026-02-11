@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded",async () => {
                                     const navSite = "bgfinancial.net.au";
                                     navigator.sendBeacon(`https://netit.com.au/api/stats/${navSite}/${target.substring(1)}`);
                             }
-                        }
+                        });
 
 
                 // Add event listeners END   🦻🦻🦻 ===================
