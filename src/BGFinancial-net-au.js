@@ -357,12 +357,15 @@ document.addEventListener("DOMContentLoaded",async () => {
 
                     // 🚨 process nav link clicks 🚨 START
                         document.addEventListener("click", (event) => {
-                            const link = event.target.closest('a');
+                            // const link = event.target.closest('a');
+                            const link = event.target.closest('label');
                             if (link) {
-                                const target = new URL(link.href).pathname;
-                                if(window.consoleLog===true){console.log(target.substring(1));}
+                                if(window.consoleLog===true){console.log(link.innerText);}
+                                // const target = new URL(link.href).pathname;
+                                const target = link.innerText.replace(" ","-");
+                                if(window.consoleLog===true){console.log(target);}
                                     const navSite = "bgfinancial.net.au";
-                                    navigator.sendBeacon(`https://netit.com.au/api/stats/${navSite}/${target.substring(1)}`);
+                                    navigator.sendBeacon(`https://netit.com.au/api/stats/${navSite}/${target}`);
                             }
                         });
                     // 🚨 process nav link clicks 🚨 END
