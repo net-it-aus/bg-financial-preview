@@ -355,9 +355,8 @@ document.addEventListener("DOMContentLoaded",async () => {
                         });
                     // 🦻 automate nav on 📲 mobile 📲 devices 📲 END
 
-                    // process nav link clicks START
+                    // 🚨 process nav link clicks 🚨 START
                         document.addEventListener("click", (event) => {
-
                             const link = event.target.closest('a');
                             if (link) {
                                 const target = new URL(link.href).pathname;
@@ -366,7 +365,7 @@ document.addEventListener("DOMContentLoaded",async () => {
                                     navigator.sendBeacon(`https://netit.com.au/api/stats/${navSite}/${target.substring(1)}`);
                             }
                         });
-
+                    // 🚨 process nav link clicks 🚨 END
 
                 // Add event listeners END   🦻🦻🦻 ===================
 
