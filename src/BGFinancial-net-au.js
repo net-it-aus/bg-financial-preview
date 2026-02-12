@@ -362,13 +362,21 @@ document.addEventListener("DOMContentLoaded",async () => {
                             if (link) {
                                 if(window.consoleLog===true){console.log(link.innerText);}
                                 // const target = new URL(link.href).pathname;
-                                const target = link.innerText.replace(" ","-");
+                                // const target = link.innerText.replace(" ","-"); // only replaces the first space
+                                const target = link.innerText
+                                    .trim()
+                                    .toLowerCase()
+                                    .replace(/\s+/g, "-")
+                                    .replace(/[^a-z0-9\-]/g, "");
                                 if(window.consoleLog===true){console.log(target);}
-                                const navSite = "bgfinancial.net.au";
+                                const SERVER_URL = "https://netit.com.au";
+                                // const navSite = "bgfinancial.net.au";
+                                const navSite = window.location.hostname;
                                 // send a blob as well
                                     const myData = JSON.stringify({someData: "some data"});
                                     const myBlob = new Blob([myData], { type: 'application/json' });
-                                    navigator.sendBeacon(`https://netit.com.au/api/stats/${navSite}/${target}`, myBlob);
+                                    // navigator.sendBeacon(`https://netit.com.au/api/stats/${navSite}/${target}`, myBlob);
+                                    navigator.sendBeacon(`${SERVER_URL}/api/stats/${navSite}/${target}`, myBlob);
                             }
                         });
                     // 🚨 process nav link clicks 🚨 END
