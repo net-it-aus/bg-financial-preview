@@ -23,8 +23,8 @@ base-uri 'self';
 form-action 'self';
 script-src-attr 'none';
 upgrade-insecure-requests;
-frame-ancestors 'self';
 ">
+<!-- frame-ancestors 'self'; IS IGNORED WHEN DELIVERED VIA A META ELEMENT -->
 <!-- "X-Frame-Options" and "X-Content-Type-Options" may only be set via an HTTP header sent along with a document. It may not be set inside <meta>. -->
     <!-- <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"> 
     ... replace it with:-

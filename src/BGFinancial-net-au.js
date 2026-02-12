@@ -364,11 +364,47 @@ document.addEventListener("DOMContentLoaded",async () => {
                                 // const target = new URL(link.href).pathname;
                                 const target = link.innerText.replace(" ","-");
                                 if(window.consoleLog===true){console.log(target);}
-                                    const navSite = "bgfinancial.net.au";
-                                    navigator.sendBeacon(`https://netit.com.au/api/stats/${navSite}/${target}`);
+                                const navSite = "bgfinancial.net.au";
+                                // send a blob as well
+                                    const myData = JSON.stringify({someData: "some data"});
+                                    const myBlob = new Blob([myData], { type: 'application/json' });
+                                    navigator.sendBeacon(`https://netit.com.au/api/stats/${navSite}/${target}`, myBlob);
                             }
                         });
                     // 🚨 process nav link clicks 🚨 END
+
+            // 🚨 navigator.sendBeacon() 🚨 START
+                function sendBeaconEvent(navTarget){
+                    if(window.consoleLog===true){console.log(navTarget);}
+                    if(window.consoleLog===true){console.log(navTarget.substring(1));}
+                    // Fires off a "fire and forget" request to your backend
+                        const SERVER_URL = "https://netit.com.au";
+                        const navSite = "bgfinancial.net.au";
+                        // send a blob as well
+                            const myData = JSON.stringify({someData: "some data"});
+                            const myBlob = new Blob([myData], { type: 'application/json' });
+                        navigator.sendBeacon(`${SERVER_URL}/api/stats/${navSite}/${navTarget.substring(1)}`,myBlob);
+                }
+                sendBeaconEvent("/site-loded");
+            // 🚨 navigator.sendBeacon() 🚨 END
+
+                window.addEventListener("unload", (event) => {
+                    sendBeaconEvent("/site-unload");
+                });
+                window.addEventListener("pagehide", (event) => {
+                    sendBeaconEvent("/site-pagehide");
+                });
+                window.addEventListener("beforeunload", (event) => {
+                    sendBeaconEvent("/site-beforeunload");
+                });
+                window.addEventListener("visibilitychange", (event) => {
+                    if(document.hidden===true){
+                        sendBeaconEvent("/site-visibilitychange-hidden");
+                    }
+                    if(document.hidden===false){
+                        sendBeaconEvent("/site-visibilitychange-visible");
+                    }
+                });
 
                 // Add event listeners END   🦻🦻🦻 ===================
 
