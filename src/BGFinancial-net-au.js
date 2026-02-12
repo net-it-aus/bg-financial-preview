@@ -1,4 +1,4 @@
-window.consoleLog = true;
+window.consoleLog = false;
 
 const now = new Date()
 const localString = new Intl.DateTimeFormat(
