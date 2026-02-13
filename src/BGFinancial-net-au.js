@@ -1,4 +1,7 @@
 window.consoleLog = false;
+const navSite = window.location.hostname || "bgfinancial.net.au"
+let pageLoadTime = 0;
+let timeOnPage = 0;
 
 const now = new Date()
 const localString = new Intl.DateTimeFormat(
@@ -273,6 +276,53 @@ console.log(localString)
     }
 // Adjust if Page 06 selected END
 
+        // 🚨🚨🚨🚨🚨🚨🚨🚨🚨 START 🚨🚨🚨🚨🚨🚨🚨🚨🚨
+            const SERVER_URL = "https://netit.com.au";
+            // 🚨 navigator.sendBeacon() 🚨 START
+                function sendBeaconEvent(navTarget){
+                    timeOnPage = Date.now() - pageLoadTime;
+                    if(window.consoleLog===true){console.log("🚨",navTarget);}
+                    const targetTxt = navTarget.startsWith("/") ? navTarget.substring(1) : navTarget;
+                    if(window.consoleLog===true){console.log("🚨",navTarget.slice(0,1));}
+                    if(window.consoleLog===true){console.log("🚨",targetTxt);}
+                    // Fires off a "fire and forget" request to your backend
+                        const myDate = new Date()
+                        const myData = JSON.stringify({
+                            screenWidth: window.innerWidth,
+                            screenHeight: window.innerHeight,
+                            browserTimestampUTC: myDate.toISOString(),
+                            browserTimestampLocal: myDate.toLocaleString(),
+                            browserTimeSinceUnixEpoch: myDate.getTime(),
+                        });
+                        if(window.consoleLog===true){"🚨",console.log(myData);}
+                        const myBlob = new Blob([myData], { type: 'application/json' });
+                        navigator.sendBeacon(`${SERVER_URL}/api/stats/${navSite}/${targetTxt}/${window.innerWidth}/${window.innerHeight}?devPixRat=${window.devicePixelRatio}&referrer=${document.referrer}&timeOnPage=${timeOnPage}`);
+                }
+            // 🚨 navigator.sendBeacon() 🚨 END
+                const isVisibleAtLoad = !document.hidden;
+                if(isVisibleAtLoad===true){
+                    pageLoadTime = Date.now();
+                    sendBeaconEvent("/site-loded");
+                }
+                window.addEventListener("unload", (event) => {
+                    sendBeaconEvent("/site-unload");
+                });
+                window.addEventListener("pagehide", (event) => {
+                    sendBeaconEvent("/site-pagehide");
+                });
+                window.addEventListener("beforeunload", (event) => {
+                    sendBeaconEvent("/site-beforeunload");
+                });
+                window.addEventListener("visibilitychange", (event) => {
+                    if(document.hidden===true){
+                        sendBeaconEvent("/site-visibilitychange-hidden");
+                    }
+                    if(document.hidden===false){
+                        pageLoadTime = Date.now();
+                        sendBeaconEvent("/site-visibilitychange-visible");
+                    }
+                });
+        // 🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨 END 🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
 
 // ======================= do after 1️⃣ DOM loaded ➕ 2️⃣ Window loaded START ======================
     async function doAfterDOMandWindowLoaded(){
@@ -311,6 +361,50 @@ console.log(localString)
             // 3. RUN ONCE ON LOAD (The "Missing Link")
                 updateLayout();
         // 🦻 Orientation and Page-06 "Source of Truth" END =======================
+
+            document.addEventListener("click", handleDocumentClick);
+            function handleDocumentClick(e) {
+                if(window.consoleLog===true){console.log(e);}
+                // filter to irrelevant clicks
+                    if (e.defaultPrevented) return; // checks if another listener has already been called
+                    // e.preventDefault();
+                    if (e.button !== 0) return; // left click only
+                    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                    if(window.consoleLog===true){console.log(e.target.tagName);}
+                    if (e.target.tagName.toLowerCase()==="input"){
+                        return; // ignore radio and check buttons
+                    }
+                // process the click
+                    if(window.consoleLog===true){console.log(e.target);}
+                    // const link = e.target.closest("a[href]");
+                    const link = e.target.closest("label");
+                    if(window.consoleLog===true){console.log(link.innerText);}
+                    const target = link.innerText
+                        .trim()
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")
+                        .replace(/[^a-z0-9\-]/g, "");
+                    sendBeaconEvent(target);
+                    // if (!link) return;
+                    // routeLinkClick(link, e);
+            }
+            // ⬅️➡️ popstate event ⬅️➡️ START
+                window.addEventListener("popstate", (event) => {
+                    if(window.consoleLog===true){console.log("popstate event:- ⬅️➡️",event.state);}
+                    // If the state has an 'action', it means it was one of our SPA transitions
+                    if (event.state && event.state.action) {
+                        if(window.consoleLog===true){console.log("popstate action:- ⬅️➡️",event.state.action);}
+                        // Re-fetch the content for the previous URL
+                        // We pass false to 'pushState' logic inside the handler to avoid an infinite loop
+                            fetchActionHandler(null, event.state.action, "GET", false); 
+                    } else {
+                        // If no state (like going back to the very first load), just refresh
+                            if(window.consoleLog===true){console.log("popstate action:- ⬅️➡️ GO TO START",event.state);}
+                            window.location.reload();
+                    }
+                });
+            // ⬅️➡️ popstate event ⬅️➡️ START
+
 
     }
 // ======================= do after 1️⃣ DOM loaded ➕ 2️⃣ Window loaded END ========================
@@ -354,65 +448,6 @@ document.addEventListener("DOMContentLoaded",async () => {
                             });
                         });
                     // 🦻 automate nav on 📲 mobile 📲 devices 📲 END
-
-                    // 🚨 process nav link clicks 🚨 START
-                        document.addEventListener("click", (event) => {
-                            // const link = event.target.closest('a');
-                            const link = event.target.closest('label');
-                            if (link) {
-                                if(window.consoleLog===true){console.log(link.innerText);}
-                                // const target = new URL(link.href).pathname;
-                                // const target = link.innerText.replace(" ","-"); // only replaces the first space
-                                const target = link.innerText
-                                    .trim()
-                                    .toLowerCase()
-                                    .replace(/\s+/g, "-")
-                                    .replace(/[^a-z0-9\-]/g, "");
-                                if(window.consoleLog===true){console.log(target);}
-                                const SERVER_URL = "https://netit.com.au";
-                                // const navSite = "bgfinancial.net.au";
-                                const navSite = window.location.hostname;
-                                // send a blob as well
-                                    const myData = JSON.stringify({someData: "some data"});
-                                    const myBlob = new Blob([myData], { type: 'application/json' });
-                                    // navigator.sendBeacon(`https://netit.com.au/api/stats/${navSite}/${target}`, myBlob);
-                                    navigator.sendBeacon(`${SERVER_URL}/api/stats/${navSite}/${target}`, myBlob);
-                            }
-                        });
-                    // 🚨 process nav link clicks 🚨 END
-
-            // 🚨 navigator.sendBeacon() 🚨 START
-                function sendBeaconEvent(navTarget){
-                    if(window.consoleLog===true){console.log(navTarget);}
-                    if(window.consoleLog===true){console.log(navTarget.substring(1));}
-                    // Fires off a "fire and forget" request to your backend
-                        const SERVER_URL = "https://netit.com.au";
-                        const navSite = "bgfinancial.net.au";
-                        // send a blob as well
-                            const myData = JSON.stringify({someData: "some data"});
-                            const myBlob = new Blob([myData], { type: 'application/json' });
-                        navigator.sendBeacon(`${SERVER_URL}/api/stats/${navSite}/${navTarget.substring(1)}`,myBlob);
-                }
-                sendBeaconEvent("/site-loded");
-            // 🚨 navigator.sendBeacon() 🚨 END
-
-                window.addEventListener("unload", (event) => {
-                    sendBeaconEvent("/site-unload");
-                });
-                window.addEventListener("pagehide", (event) => {
-                    sendBeaconEvent("/site-pagehide");
-                });
-                window.addEventListener("beforeunload", (event) => {
-                    sendBeaconEvent("/site-beforeunload");
-                });
-                window.addEventListener("visibilitychange", (event) => {
-                    if(document.hidden===true){
-                        sendBeaconEvent("/site-visibilitychange-hidden");
-                    }
-                    if(document.hidden===false){
-                        sendBeaconEvent("/site-visibilitychange-visible");
-                    }
-                });
 
                 // Add event listeners END   🦻🦻🦻 ===================
 
