@@ -308,7 +308,7 @@ console.log(localString)
                 const isVisibleAtLoad = !document.hidden;
                 if(isVisibleAtLoad===true){
                     pageLoadTime = Date.now();
-                    sendBeaconEvent("/site-loded");
+                    sendBeaconEvent("/site-load");
                 }
                 window.addEventListener("unload", (event) => {
                     sendBeaconEvent("/site-unload");
