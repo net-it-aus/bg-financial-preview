@@ -315,6 +315,7 @@ console.log(localString)
                         referrer: ref,
                         timeOnPage
                     };
+                    if(window.consoleLog===true){console.log("🚨 sendBeacon payload:-\n",payload);}
                     const blob = new Blob(
                         [JSON.stringify(payload)],
                         { type: "application/json" }
