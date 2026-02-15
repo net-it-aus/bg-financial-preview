@@ -298,9 +298,9 @@ console.log(localString)
                             browserTimeSinceUnixEpoch: myDate.getTime(),
                         });
                         if(window.consoleLog===true){"🚨",console.log(myData);}
-                        const myBlob = new Blob([myData], { type: 'application/json' });
+                        // const myBlob = new Blob([myData], { type: 'application/json' });
                         const ref = encodeURIComponent(document.referrer || 'direct'); // document.referrer is a full URL. If a user comes from a URL with special characters (like ? or &), it will break your sendBeacon string. You should wrap any string-based variables in encodeURIComponent().
-                        const path = encodeURIComponent(targetTxt);
+                        const navPath = encodeURIComponent(targetTxt);
                         // // navigator.sendBeacon(`${SERVER_URL}/api/stats/${navSite}/${targetTxt}/${window.innerWidth}/${window.innerHeight}?devPixRat=${window.devicePixelRatio}&referrer=${document.referrer}&timeOnPage=${timeOnPage}`);
                         // navigator.sendBeacon(`${serverURL}/api/stats/${navSite}/${path}/${window.innerWidth}/${window.innerHeight}/${window.screen.width}/${window.screen.height}?devPixRat=${window.devicePixelRatio}&referrer=${ref}&timeOnPage=${timeOnPage}`);
                     const payload = {
