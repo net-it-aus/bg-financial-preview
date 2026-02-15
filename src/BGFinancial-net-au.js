@@ -325,7 +325,9 @@ console.log(localString)
                         blob
                     );
                     if (!success) {
-                        console.log("Beacon failed to queue");
+                        if(window.consoleLog===true){console.log("🚨 Beacon failed to queue.");}
+                    }else{
+                        if(window.consoleLog===true){console.log("🚨 Beacon sent to queue successfully.");}
                     }
                 }
             // 🚨 navigator.sendBeacon() 🚨 END
