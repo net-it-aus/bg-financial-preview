@@ -1,5 +1,6 @@
-window.consoleLog = true;
+window.consoleLog = false;
 const navSite = window.location.hostname || "bgfinancial.net.au"
+const serverURL = "https://netit.com.au";
 let pageLoadTime = 0;
 let timeOnPage = 0;
 
@@ -288,15 +289,20 @@ console.log(localString)
                     // Fires off a "fire and forget" request to your backend
                         const myDate = new Date()
                         const myData = JSON.stringify({
-                            screenWidth: window.innerWidth,
-                            screenHeight: window.innerHeight,
+                            viewportWidth: window.innerWidth,
+                            viewportHeight: window.innerHeight,
+                            screenWidth: window.screen.width,
+                            screenHeight: window.screen.height,
                             browserTimestampUTC: myDate.toISOString(),
                             browserTimestampLocal: myDate.toLocaleString(),
                             browserTimeSinceUnixEpoch: myDate.getTime(),
                         });
                         if(window.consoleLog===true){"🚨",console.log(myData);}
                         const myBlob = new Blob([myData], { type: 'application/json' });
-                        navigator.sendBeacon(`${SERVER_URL}/api/stats/${navSite}/${targetTxt}/${window.innerWidth}/${window.innerHeight}?devPixRat=${window.devicePixelRatio}&referrer=${document.referrer}&timeOnPage=${timeOnPage}`);
+                        const ref = encodeURIComponent(document.referrer || 'direct'); // document.referrer is a full URL. If a user comes from a URL with special characters (like ? or &), it will break your sendBeacon string. You should wrap any string-based variables in encodeURIComponent().
+                        const path = encodeURIComponent(targetTxt);
+                        // navigator.sendBeacon(`${SERVER_URL}/api/stats/${navSite}/${targetTxt}/${window.innerWidth}/${window.innerHeight}?devPixRat=${window.devicePixelRatio}&referrer=${document.referrer}&timeOnPage=${timeOnPage}`);
+                        navigator.sendBeacon(`${serverURL}/api/stats/${navSite}/${path}/${window.innerWidth}/${window.innerHeight}/${window.screen.width}/${window.screen.height}?devPixRat=${window.devicePixelRatio}&referrer=${ref}&timeOnPage=${timeOnPage}`);
                 }
             // 🚨 navigator.sendBeacon() 🚨 END
                 const isVisibleAtLoad = !document.hidden;
