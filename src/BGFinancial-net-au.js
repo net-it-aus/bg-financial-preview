@@ -318,7 +318,7 @@ console.log(localString)
                     if(window.consoleLog===true){console.log("🚨 sendBeacon payload:-\n",payload);}
                     const blob = new Blob(
                         [JSON.stringify(payload)],
-                        { type: "application/json" }
+                        { type: "application/json" } // use type: "text/plain" if necessary but still need to parse it as JSON at the server
                     );
                     const success = navigator.sendBeacon(
                         `${serverURL}/api/stats`,
