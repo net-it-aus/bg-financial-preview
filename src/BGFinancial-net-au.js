@@ -416,8 +416,8 @@ console.log(localString)
                     if(window.consoleLog===true){console.log(e.target);}
                     // const link = e.target.closest("a[href]");
                     const link = e.target.closest("label");
-                    if(!link){return;}
                     if(window.consoleLog===true){console.log(link.innerText);}
+                    if(!link){return;}
                     const target = link.innerText
                         .trim()
                         .toLowerCase()
