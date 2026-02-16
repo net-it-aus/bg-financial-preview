@@ -1,5 +1,6 @@
 window.consoleLog = true;
-const navSite = window.location.hostname || "bgfinancial.net.au"
+const navSite = window.location.hostname;
+if(navSite === "bgfinancial.net.au"){window.consoleLog = false;}
 if(window.consoleLog===true){console.log(`navSite`,navSite);}
 const serverURL = "https://netit.com.au";
 let pageLoadTime = 0;
