@@ -444,6 +444,15 @@ console.log(localString)
                 });
             // ⬅️➡️ popstate event ⬅️➡️ START
 
+        // 
+            function populateCopyrightNotice(){
+                // console.log("copyright-notice display status:- " + document.getElementById("copyright-notice").style.display);
+                var dt = new Date();
+                // var dt1 = dt.toLocaleString().slice(6,10);
+                var dt1 = dt.getFullYear();
+                document.getElementById("copyright-notice").innerHTML =  '&copy ' + dt1 + ' BG Financial Group Pty Ltd.';
+            }
+            populateCopyrightNotice();
 
     }
 // ======================= do after 1️⃣ DOM loaded ➕ 2️⃣ Window loaded END ========================
