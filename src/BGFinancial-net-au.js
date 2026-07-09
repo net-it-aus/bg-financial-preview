@@ -5,6 +5,14 @@ if(window.consoleLog===true){console.log(`navSite`,navSite);}
 const serverURL = "https://netit.com.au";
 let pageLoadTime = 0;
 let timeOnPage = 0;
+let mouseMoved = false;
+    document.addEventListener('mousemove', () => {
+        mouseMoved = true;
+    });
+let touchMoved = false;
+    document.addEventListener('touchmove', () => {
+        touchMoved = true;
+    });
 
 const now = new Date()
 const localString = new Intl.DateTimeFormat(
@@ -308,6 +316,8 @@ console.log(localString)
                     const payload = {
                         navSite,
                         navPath,
+                        mouseMoved,
+                        touchMoved,
                         innerWidth: window.innerWidth,
                         innerHeight: window.innerHeight,
                         screenWidth: window.screen.width,
